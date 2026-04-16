@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【血統①】血統表の読み方入門 | 馬研アカデミー</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = { theme: { extend: { colors: { turf: '#2E8B57', sky: '#E0F2FE', dark: '#1F2937' } } } }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .doc-content h1 { @apply text-2xl md:text-3xl font-extrabold text-gray-900 mb-8 pb-4 border-b-2 border-turf leading-tight; }
+            .doc-content h2 { @apply text-xl md:text-2xl font-bold text-gray-900 border-l-4 border-turf pl-4 mt-12 mb-6; }
+            .doc-content h3 { @apply text-lg font-bold text-gray-800 mt-8 mb-4 flex items-center bg-gray-50 py-2 px-3 rounded; }
+            .doc-content p { @apply text-gray-700 leading-relaxed mb-6; }
+            .doc-content blockquote { @apply bg-sky/40 border-l-4 border-blue-500 p-6 rounded-r-xl shadow-sm my-8; }
+            .doc-content blockquote p { @apply text-gray-800 font-bold m-0 leading-relaxed; }
+            .doc-content table { @apply w-full text-left border-collapse rounded-lg overflow-hidden shadow-sm my-8 border border-gray-200; }
+            .doc-content th { @apply bg-turf text-white py-3 px-4 font-bold text-sm whitespace-nowrap; }
+            .doc-content td { @apply bg-white border-b border-gray-100 py-3 px-4 text-gray-700 text-sm align-middle; }
+            .doc-content tr:last-child td { @apply border-b-0; }
+            .doc-content strong { @apply font-bold text-gray-900 bg-yellow-100/50 px-1 rounded; }
+            .doc-content hr { @apply my-10 border-t-2 border-gray-100 border-dashed; }
+            .doc-content pre { @apply bg-dark text-gray-200 p-6 rounded-xl overflow-x-auto my-6 font-mono text-sm sm:text-base shadow-inner leading-relaxed; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased flex flex-col min-h-screen">
+
+    <nav class="bg-white/90 backdrop-blur-md shadow-sm fixed w-full z-20 top-0 border-b border-green-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="index.html" class="text-gray-500 hover:text-turf transition flex items-center font-bold">
+                <i class="fa-solid fa-arrow-left mr-2"></i>ポータルへ戻る
+            </a>
+            <span class="text-sm font-bold text-gray-400 uppercase tracking-widest">Step 3</span>
+        </div>
+    </nav>
+
+    <main class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-28 w-full">
+        <div class="bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-gray-100 doc-content">
+            
+            <h1>【血統①】血統表の読み方入門</h1>
+
+            <blockquote>
+                <p>💡 <strong>生理学メモ</strong><br>
+                「血統表は『遺伝的ポテンシャルの設計図』。ただし、設計図通りに筋肉が付き、心肺機能が育つかは育成環境や調教という『後天的なストレス適応』に依存する。」</p>
+            </blockquote>
+
+            <hr>
+
+            <h2>血統表とは何か</h2>
+            <p>血統表とは競走馬の<strong>家系図</strong>だ。通常は5代遡って記載される。右に行くほど古い世代、上が父方・下が母方という構造で、見慣れると1枚の紙から馬の「遺伝的履歴」が読み取れるようになる。</p>
+
+<pre><code>【血統表の構造イメージ（3代）】
+           ┌─ 父の父（祖父）
+       ┌─ 父
+       │   └─ 父の母（祖母）
+◯◯（本馬）
+       │   ┌─ 母の父（母父/BMS）
+       └─ 母
+           └─ 母の母（祖母）</code></pre>
+
+            <hr>
+
+            <h2>まず押さえる4つの用語</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>用語</th>
+                        <th>英語</th>
+                        <th>意味</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>父（サイアー）</strong></td>
+                        <td>Sire</td>
+                        <td>直接の父親。産駒の能力に最も直接的な影響</td>
+                    </tr>
+                    <tr>
+                        <td><strong>母（ダム）</strong></td>
+                        <td>Dam</td>
+                        <td>直接の母親。気性・体質・牝系の特徴を伝える</td>
+                    </tr>
+                    <tr>
+                        <td><strong>母父（BMS）</strong></td>
+                        <td>Broodmare Sire</td>
+                        <td>母の父。「母父の法則」として知られるほど影響が大きい</td>
+                    </tr>
+                    <tr>
+                        <td><strong>牝系</strong></td>
+                        <td>Female/Family Line</td>
+                        <td>母→祖母→曽祖母と続く母方の血の流れ</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <hr>
+
+            <h2>3つの「ライン」で血統表を読む</h2>
+
+            <h3>1. サイアーライン（父系）</h3>
+            <p>血統表の<strong>最上段の横の列</strong>が父系（サイアーライン）だ。父→父の父→父の父の父…と続く。日本競馬では現在、この父系の大半が<strong>サンデーサイレンス系</strong>（ターントゥ系）か<strong>ノーザンダンサー系</strong>のどちらかに収束している。</p>
+            <p class="bg-gray-100 p-4 rounded text-sm font-mono">例：ディープインパクトの父系<br>ディープインパクト → サンデーサイレンス → ヘイロー → ヘイルトゥリーズン</p>
+
+            <h3>2. ファミリーライン（牝系）</h3>
+            <p>血統表の<strong>最下段の横の列</strong>が牝系だ。距離適性や成長力、底力（スタミナ）を伝える重要なラインとされる。</p>
+
+            <h3>3. 母父（BMS）ライン</h3>
+            <p>母の父。サイアーラインの次に重視される。スピード型の父にスタミナ型の母父を合わせるなど、バランスを取るための重要なスパイスとなる。</p>
+
+        </div>
+
+        <!-- ページネーション -->
+        <div class="mt-8 flex justify-between">
+            <a href="02_expectation.html" class="bg-white border border-gray-200 text-gray-500 hover:text-turf font-bold py-4 px-6 rounded-xl shadow-sm transition flex items-center group">
+                <i class="fa-solid fa-chevron-left mr-3 group-hover:-translate-x-1 transition transform"></i> 前へ
+            </a>
+            <a href="06_pedigree_2.html" class="bg-white border border-gray-200 text-gray-700 hover:text-turf hover:border-turf font-bold py-4 px-6 rounded-xl shadow-sm transition flex items-center group">
+                <div class="text-right mr-4">
+                    <span class="block text-xs text-gray-400 mb-1">次の講義</span>
+                    <span class="block text-sm group-hover:text-turf">【血統②】インブリードとニックス</span>
+                </div>
+                <i class="fa-solid fa-chevron-right text-xl text-gray-300 group-hover:text-turf transition"></i>
+            </a>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-gray-400 py-8 mt-auto text-center text-sm">
+        <p>&copy; 2026 馬研. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

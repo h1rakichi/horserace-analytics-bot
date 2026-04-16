@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【概観】競馬の全体像と日本競馬の歴史 | 馬研アカデミー</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        turf: '#2E8B57',
+                        sky: '#E0F2FE',
+                        dark: '#1F2937',
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .doc-content h1 { @apply text-2xl md:text-3xl font-extrabold text-gray-900 mb-8 pb-4 border-b-2 border-turf leading-tight; }
+            .doc-content h2 { @apply text-xl md:text-2xl font-bold text-gray-900 border-l-4 border-turf pl-4 mt-12 mb-6; }
+            .doc-content h3 { @apply text-lg font-bold text-gray-800 mt-8 mb-4; }
+            .doc-content p { @apply text-gray-700 leading-relaxed mb-6; }
+            .doc-content ul { @apply list-disc list-outside ml-6 space-y-2 mb-6 text-gray-700; }
+            .doc-content blockquote { @apply bg-sky/40 border-l-4 border-blue-500 p-6 rounded-r-xl shadow-sm my-8; }
+            .doc-content blockquote p { @apply text-gray-800 font-bold m-0 leading-relaxed; }
+            .doc-content table { @apply w-full text-left border-collapse rounded-lg overflow-hidden shadow-sm my-8 border border-gray-200; }
+            .doc-content th { @apply bg-turf text-white py-3 px-4 font-bold text-sm whitespace-nowrap; }
+            .doc-content td { @apply bg-white border-b border-gray-100 py-3 px-4 text-gray-700 text-sm align-top; }
+            .doc-content tr:last-child td { @apply border-b-0; }
+            .doc-content strong { @apply font-bold text-gray-900 bg-yellow-100/50 px-1 rounded; }
+            .doc-content hr { @apply my-10 border-t-2 border-gray-100 border-dashed; }
+            .doc-content pre { @apply bg-gray-800 text-gray-100 p-4 rounded-xl overflow-x-auto my-6 font-mono text-sm shadow-inner; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased flex flex-col min-h-screen">
+
+    <nav class="bg-white/90 backdrop-blur-md shadow-sm fixed w-full z-20 top-0 border-b border-green-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="index.html" class="text-gray-500 hover:text-turf transition flex items-center font-bold">
+                <i class="fa-solid fa-arrow-left mr-2"></i>ポータルへ戻る
+            </a>
+            <span class="text-sm font-bold text-gray-400 uppercase tracking-widest">Step 1</span>
+        </div>
+    </nav>
+
+    <main class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-28 w-full">
+        <div class="bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-gray-100 doc-content">
+            
+            <h1>【概観】競馬の全体像と日本競馬の歴史</h1>
+
+            <blockquote>
+                <p>💡 <strong>ワンポイント</strong><br>
+                「環境が生物を淘汰するように、レース体系（環境）の歴史的変化が、日本独自のスピードとスタミナを兼ね備えた馬の進化を促してきた。」</p>
+            </blockquote>
+
+            <hr>
+
+            <h2>競馬とは何か</h2>
+            <p>競馬は単なる「馬のレース」ではなく、<strong>血統・育成・騎乗・調教が複合した生体パフォーマンスの競技</strong>だ。馬主・調教師・騎手・生産者それぞれの思惑が交差し、その結果がオッズと馬券という形で市場に反映される。</p>
+            <p>日本では<strong>JRA（日本中央競馬会）</strong>が中央競馬を主催し、全国10か所の競馬場でレースを開催している。地方競馬（NAR）と合わせると、日本は世界有数の競馬大国だ。</p>
+
+            <hr>
+
+            <h2>日本競馬の歴史年表</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>年</th>
+                        <th>出来事</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1954年</strong></td>
+                        <td>JRA（日本中央競馬会）設立。国営競馬を引き継ぎ特殊法人化</td>
+                    </tr>
+                    <tr>
+                        <td><strong>1959年</strong></td>
+                        <td>栗東・美浦のトレーニングセンター整備が本格化</td>
+                    </tr>
+                    <tr>
+                        <td><strong>1981年</strong></td>
+                        <td><strong>ジャパンカップ創設</strong>。日本初の国際招待競走、「世界に通用する馬づくり」を掲げる</td>
+                    </tr>
+                    <tr>
+                        <td><strong>1984年</strong></td>
+                        <td><strong>グレード制（G1・G2・G3）導入</strong>。重賞競走に格付けが生まれ、レースのブランド化が進む</td>
+                    </tr>
+                    <tr>
+                        <td><strong>1992年</strong></td>
+                        <td>ジャパンカップが国際G1競走に認定。日本競馬が世界基準に接続</td>
+                    </tr>
+                    <tr>
+                        <td><strong>1997年</strong></td>
+                        <td>ダート重賞の整備拡充。芝・ダートの二体系が確立していく</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2000年代〜</strong></td>
+                        <td>サンデーサイレンス産駒の席巻と、日本馬による海外G1制覇が日常化</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ページネーション -->
+        <div class="mt-8 flex justify-end">
+            <a href="04_thoroughbred.html" class="bg-white border border-gray-200 text-gray-700 hover:text-turf hover:border-turf font-bold py-4 px-6 rounded-xl shadow-sm transition flex items-center group">
+                <div class="text-right mr-4">
+                    <span class="block text-xs text-gray-400 mb-1">次の講義</span>
+                    <span class="block text-sm group-hover:text-turf">【基礎】サラブレッドとは何か？</span>
+                </div>
+                <i class="fa-solid fa-chevron-right text-xl text-gray-300 group-hover:text-turf transition"></i>
+            </a>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-gray-400 py-8 mt-auto text-center text-sm">
+        <p>&copy; 2026 馬研. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

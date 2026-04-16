@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【入門】JRAの馬券の種類と買い方ガイド | 馬研アカデミー</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = { theme: { extend: { colors: { turf: '#2E8B57', sky: '#E0F2FE', dark: '#1F2937' } } } }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .doc-content h1 { @apply text-2xl md:text-3xl font-extrabold text-gray-900 mb-8 pb-4 border-b-2 border-turf leading-tight; }
+            .doc-content h2 { @apply text-xl md:text-2xl font-bold text-gray-900 border-l-4 border-turf pl-4 mt-12 mb-6; }
+            .doc-content h3 { @apply text-lg font-bold text-gray-800 mt-8 mb-4 flex items-center bg-gray-50 py-2 px-3 rounded; }
+            .doc-content p { @apply text-gray-700 leading-relaxed mb-6; }
+            .doc-content ul { @apply list-disc list-outside ml-6 space-y-2 mb-6 text-gray-700; }
+            .doc-content ol { @apply list-decimal list-outside ml-6 space-y-4 mb-6 text-gray-700 font-bold; }
+            .doc-content ol ul { @apply mt-2 font-normal; }
+            .doc-content blockquote { @apply bg-sky/40 border-l-4 border-blue-500 p-6 rounded-r-xl shadow-sm my-8; }
+            .doc-content blockquote p { @apply text-gray-800 font-bold m-0 leading-relaxed; }
+            .doc-content table { @apply w-full text-left border-collapse rounded-lg overflow-hidden shadow-sm my-8 border border-gray-200; }
+            .doc-content th { @apply bg-turf text-white py-3 px-4 font-bold text-sm whitespace-nowrap; }
+            .doc-content td { @apply bg-white border-b border-gray-100 py-3 px-4 text-gray-700 text-sm align-middle; }
+            .doc-content tr:last-child td { @apply border-b-0; }
+            .doc-content strong { @apply font-bold text-gray-900 bg-yellow-100/50 px-1 rounded; }
+            .doc-content hr { @apply my-10 border-t-2 border-gray-100 border-dashed; }
+            .doc-content a { @apply text-blue-600 hover:text-blue-800 underline transition; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased flex flex-col min-h-screen">
+
+    <nav class="bg-white/90 backdrop-blur-md shadow-sm fixed w-full z-20 top-0 border-b border-green-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="index.html" class="text-gray-500 hover:text-turf transition flex items-center font-bold">
+                <i class="fa-solid fa-arrow-left mr-2"></i>ポータルへ戻る
+            </a>
+            <span class="text-sm font-bold text-gray-400 uppercase tracking-widest">Step 2</span>
+        </div>
+    </nav>
+
+    <main class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-28 w-full">
+        <div class="bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-gray-100 doc-content">
+            
+            <h1>【入門】JRAの馬券の種類と買い方ガイド</h1>
+
+            <blockquote>
+                <p>💡 <strong>ワンポイント</strong><br>
+                「初心者はまず『当てる』ことより『仕組み』を理解すること。筋トレでフォームを固める前に重さだけ追っても怪我をするのと同じ。」</p>
+            </blockquote>
+
+            <hr>
+
+            <h2>馬券の種類一覧</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>馬券種</th>
+                        <th>的中条件</th>
+                        <th>控除率</th>
+                        <th>難易度</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>単勝</strong></td>
+                        <td>1着を当てる</td>
+                        <td>20%</td>
+                        <td>★☆☆</td>
+                    </tr>
+                    <tr>
+                        <td><strong>複勝</strong></td>
+                        <td>1頭が3着以内</td>
+                        <td>20%</td>
+                        <td>★☆☆</td>
+                    </tr>
+                    <tr>
+                        <td><strong>枠連</strong></td>
+                        <td>1・2着の枠番（順不同）</td>
+                        <td>22.5%</td>
+                        <td>★★☆</td>
+                    </tr>
+                    <tr>
+                        <td><strong>馬連</strong></td>
+                        <td>1・2着の馬番（順不同）</td>
+                        <td>22.5%</td>
+                        <td>★★☆</td>
+                    </tr>
+                    <tr>
+                        <td><strong>馬単</strong></td>
+                        <td>1・2着の馬番（順番通り）</td>
+                        <td>25%</td>
+                        <td>★★★</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ワイド</strong></td>
+                        <td>1頭が3着以内に2頭</td>
+                        <td>22.5%</td>
+                        <td>★★☆</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3連複</strong></td>
+                        <td>1〜3着の馬番（順不同）</td>
+                        <td>25%</td>
+                        <td>★★★</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3連単</strong></td>
+                        <td>1〜3着の馬番（順番通り）</td>
+                        <td>27.5%</td>
+                        <td>★★★</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <hr>
+
+            <h2>各馬券の特徴</h2>
+
+            <h3>🟢 単勝・複勝（初心者向け）</h3>
+            <ul>
+                <li><strong>単勝</strong>：1着馬を1頭指定するだけ。最もシンプルで、オッズが直感的に把握しやすい。</li>
+                <li><strong>複勝</strong>：指定した馬が3着以内に入れば的中。配当は低めだが、当たりやすい。</li>
+                <li><strong>なぜ初心者に推奨？</strong>：控除率が最も低く（20%）、馬の実力を素直に評価する練習になるため。</li>
+            </ul>
+
+            <h3>🟡 馬連・ワイド（中級入口）</h3>
+            <ul>
+                <li><strong>馬連</strong>：上位2頭を順不同で当てる。単勝より配当が高く、実用的なバランス。</li>
+                <li><strong>ワイド</strong>：2頭を選んで両方が3着以内なら的中。的中の間口が広い分、配当は控えめ。</li>
+            </ul>
+
+            <h3>🔴 馬単・3連複・3連単（上級）</h3>
+            <ul>
+                <li><strong>馬単</strong>：馬連より配当が高いが、着順まで当てる必要あり。</li>
+                <li><strong>3連複</strong>：上位3頭を順不同で当てる。配当は大きいが組み合わせ数が多い。</li>
+                <li><strong>3連単</strong>：最大難易度。組み合わせは最大4,896通り。高配当狙いだが期待値は最低水準。</li>
+            </ul>
+
+            <hr>
+
+            <h2>買い方の基本フロー</h2>
+            <ol>
+                <li><strong>JRAのサービスを利用する</strong>
+                    <ul>
+                        <li>現地（競馬場・WINS）：マークシートで投票機へ</li>
+                        <li>オンライン：<a href="https://www.ipat.jra.go.jp/" target="_blank">即PAT</a> または <a href="https://www.a-pat.jra.go.jp/" target="_blank">A-PAT</a>（要口座開設）</li>
+                    </ul>
+                </li>
+                <li><strong>レースを選ぶ</strong>
+                    <ul>
+                        <li>開催場・レース番号を確認（例：東京5R）</li>
+                    </ul>
+                </li>
+                <li><strong>馬を選ぶ</strong>
+                    <ul>
+                        <li>出馬表（オッズ、馬体重、騎手など）を参考に馬券を組み立てる。</li>
+                    </ul>
+                </li>
+            </ol>
+
+        </div>
+
+        <!-- ページネーション -->
+        <div class="mt-8 flex justify-between">
+            <a href="04_thoroughbred.html" class="bg-white border border-gray-200 text-gray-500 hover:text-turf font-bold py-4 px-6 rounded-xl shadow-sm transition flex items-center group">
+                <i class="fa-solid fa-chevron-left mr-3 group-hover:-translate-x-1 transition transform"></i> 前へ
+            </a>
+            <a href="02_expectation.html" class="bg-white border border-gray-200 text-gray-700 hover:text-turf hover:border-turf font-bold py-4 px-6 rounded-xl shadow-sm transition flex items-center group">
+                <div class="text-right mr-4">
+                    <span class="block text-xs text-gray-400 mb-1">次の講義</span>
+                    <span class="block text-sm group-hover:text-turf">【重要】控除率と期待値</span>
+                </div>
+                <i class="fa-solid fa-chevron-right text-xl text-gray-300 group-hover:text-turf transition"></i>
+            </a>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-gray-400 py-8 mt-auto text-center text-sm">
+        <p>&copy; 2026 馬研. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
