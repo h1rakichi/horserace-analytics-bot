@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>研究室『馬研』| アカデミック・ポータル</title>
+    <meta name="description" content="データと論理でレースに向き合う、サークルメンバー専用の競馬アナリティクス研究室。AI予測・過去成績DB検索・収支管理をLINEから手軽に利用できます。" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              line: "#06C755",
+              turf: "#2E8B57",
+              "turf-dark": "#1a5c38",
+              sky: "#E0F2FE",
+              dark: "#1F2937",
+            },
+            fontFamily: {
+              sans: ["Helvetica Neue","Arial","Hiragino Kaku Gothic ProN","Hiragino Sans","Meiryo","sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      html { scroll-behavior: smooth; }
+
+      /* 芝テクスチャ背景 */
+      .bg-turf-pattern {
+        background-color: #2e8b57;
+        background-image: radial-gradient(#3cb371 1px, transparent 1px);
+        background-size: 20px 20px;
+      }
+
+      /* ヒーロー用グラデーション */
+      .hero-gradient {
+        background: linear-gradient(160deg, #E0F2FE 0%, #f0fdf4 60%, #dcfce7 100%);
+      }
+
+      /* カードホバー */
+      .card-hover {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.10);
+      }
+
+      /* ステップライン */
+      .step-connector {
+        position: absolute;
+        left: 50%;
+        bottom: -2rem;
+        transform: translateX(-50%);
+        width: 2px;
+        height: 2rem;
+        background: linear-gradient(to bottom, #2E8B57, transparent);
+      }
+
+      /* アコーディオン */
+      details summary::-webkit-details-marker { display: none; }
+      details[open] summary .chevron { transform: rotate(180deg); }
+      .chevron { transition: transform 0.2s; }
+
+      /* 数字バッジ */
+      .num-badge {
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 9999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 1rem;
+        background: #2E8B57;
+        color: white;
+        flex-shrink: 0;
+      }
+
+      /* ナビ下線アニメ */
+      .nav-link {
+        position: relative;
+      }
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: #2E8B57;
+        transition: width 0.2s;
+      }
+      .nav-link:hover::after { width: 100%; }
+    </style>
+  </head>
+
+  <body class="bg-gray-50 text-gray-800 antialiased flex flex-col min-h-screen">
+
+    <!-- ══ ナビゲーション ══ -->
+    <nav class="bg-white/95 backdrop-blur-md shadow-sm fixed w-full z-30 top-0 border-b border-green-100">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16 items-center">
+          <!-- ロゴ -->
+          <a href="#" class="flex-shrink-0 flex items-center gap-2">
+            <div class="w-8 h-8 bg-turf rounded-lg flex items-center justify-center">
+              <i class="fa-solid fa-horse-head text-white text-sm"></i>
+            </div>
+            <span class="text-lg font-extrabold text-gray-900 tracking-tight">研究室『馬研』</span>
+          </a>
+          <!-- デスクトップナビ -->
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="#about"   class="nav-link text-gray-600 hover:text-turf font-medium transition text-sm">このサービスについて</a>
+            <a href="#academy" class="nav-link text-gray-600 hover:text-turf font-medium transition text-sm">競馬集中講義</a>
+            <a href="#guide"   class="nav-link text-gray-600 hover:text-turf font-medium transition text-sm">操作ガイド</a>
+            <a href="#join"    class="nav-link text-gray-600 hover:text-turf font-medium transition text-sm">参加方法</a>
+            <a href="https://lin.ee/9SwaqSP" target="_blank"
+               class="bg-line hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full text-sm transition flex items-center gap-1.5 shadow-sm">
+              <i class="fa-brands fa-line"></i> LINEで開く
+            </a>
+          </div>
+          <!-- モバイルハンバーガー（簡易） -->
+          <a href="https://lin.ee/9SwaqSP" target="_blank"
+             class="md:hidden bg-line text-white font-bold py-1.5 px-3 rounded-full text-sm flex items-center gap-1">
+            <i class="fa-brands fa-line"></i> LINE
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ══ ヒーロー ══ -->
+    <section class="relative min-h-screen flex items-center pt-16 overflow-hidden hero-gradient">
+      <!-- 装飾：芝テクスチャ -->
+      <div class="absolute bottom-0 left-0 right-0 h-32 bg-turf-pattern opacity-10 pointer-events-none"></div>
+      <!-- 装飾：大きな円 -->
+      <div class="absolute -top-32 -right-32 w-96 h-96 bg-green-100 rounded-full opacity-40 pointer-events-none"></div>
+      <div class="absolute top-1/2 -left-20 w-64 h-64 bg-sky rounded-full opacity-60 pointer-events-none"></div>
+
+      <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <!-- テキスト -->
+          <div>
+            <span class="inline-flex items-center gap-2 py-1 px-3 rounded-full bg-white/80 text-turf text-xs font-bold tracking-wider mb-6 shadow-sm border border-green-100">
+              <span class="w-2 h-2 bg-turf rounded-full animate-pulse"></span>
+              AUTHORIZED MEMBERS ONLY
+            </span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
+              データで挑む、<br>
+              <span class="text-turf">競馬の本質</span>へ。
+            </h1>
+            <p class="text-lg text-gray-600 leading-relaxed mb-8 max-w-lg">
+              直感ではなくデータと論理で競馬に向き合う、サークルメンバー専用の研究室。
+              過去成績DB・AI予測・収支管理をLINEから手軽に利用できます。
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="#academy"
+                 class="bg-turf hover:bg-turf-dark text-white font-bold py-3 px-7 rounded-full shadow-lg transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-book-open"></i> 講義を見る
+              </a>
+              <a href="guide.html"
+                 class="bg-white hover:bg-gray-50 text-gray-800 border border-gray-300 font-bold py-3 px-7 rounded-full shadow-sm transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-terminal"></i> 操作マニュアル
+              </a>
+            </div>
+            <!-- 免責バナー -->
+            <div class="mt-8 flex items-start gap-2 bg-white/70 backdrop-blur-sm border border-gray-200 rounded-xl px-4 py-3 max-w-lg">
+              <i class="fa-solid fa-shield-halved text-turf mt-0.5 flex-shrink-0"></i>
+              <p class="text-xs text-gray-500 leading-relaxed">
+                本サービスはサークルメンバー専用の学術研究ツールです。馬券の購入推薦・予想販売などのギャンブル斡旋は一切行いません。
+              </p>
+            </div>
+          </div>
+
+          <!-- 右カラム：フィーチャーカード -->
+          <div class="grid grid-cols-1 gap-4">
+            <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-5 border border-gray-100 shadow-sm card-hover flex items-center gap-4">
+              <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center text-2xl flex-shrink-0">🏇</div>
+              <div>
+                <div class="font-bold text-gray-900">AI予測ウィザード</div>
+                <div class="text-sm text-gray-500">プロファイル×データ期間を選んで上位5頭を予測。LINEから数タップで完結。</div>
+              </div>
+            </div>
+            <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-5 border border-gray-100 shadow-sm card-hover flex items-center gap-4">
+              <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-2xl flex-shrink-0">🔍</div>
+              <div>
+                <div class="font-bold text-gray-900">過去成績DB検索</div>
+                <div class="text-sm text-gray-500">馬・騎手・調教師の馬場×距離別成績をJRA公式データ（TFJV）で即検索。</div>
+              </div>
+            </div>
+            <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-5 border border-gray-100 shadow-sm card-hover flex items-center gap-4">
+              <div class="w-12 h-12 bg-yellow-50 rounded-xl flex items-center justify-center text-2xl flex-shrink-0">📊</div>
+              <div>
+                <div class="font-bold text-gray-900">収支・的中率の管理</div>
+                <div class="text-sm text-gray-500">馬券種ごとの購入額・払戻を記録。回収率・的中率を自動集計。</div>
+              </div>
+            </div>
+            <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-5 border border-gray-100 shadow-sm card-hover flex items-center gap-4">
+              <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-2xl flex-shrink-0">📚</div>
+              <div>
+                <div class="font-bold text-gray-900">競馬集中講義</div>
+                <div class="text-sm text-gray-500">馬券の仕組みから血統論まで。予測を最大限に活かすための知識ベース。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- スクロールヒント -->
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-gray-400 animate-bounce">
+        <span class="text-xs font-medium">SCROLL</span>
+        <i class="fa-solid fa-chevron-down text-xs"></i>
+      </div>
+    </section>
+
+    <!-- ══ このサービスについて ══ -->
+    <section id="about" class="scroll-mt-16 bg-white border-y border-gray-100 py-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-14">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">研究室『馬研』とは</h2>
+          <p class="text-gray-500 max-w-2xl mx-auto">「競馬は運ゲー」で終わらせない。データと統計学の視点から競馬の本質に迫るサークル専用プラットフォームです。</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="text-center p-6">
+            <div class="w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4">🎓</div>
+            <h3 class="font-bold text-gray-900 text-lg mb-2">学術的アプローチ</h3>
+            <p class="text-sm text-gray-500 leading-relaxed">勝率・回収率・期待値といった統計的概念を通じて、競馬を「感情」ではなく「論理」で分析するスキルを養います。</p>
+          </div>
+          <div class="text-center p-6">
+            <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4">🤖</div>
+            <h3 class="font-bold text-gray-900 text-lg mb-2">AIとデータ活用</h3>
+            <p class="text-sm text-gray-500 leading-relaxed">JRA公式データをもとにしたスコアリングエンジンが、馬場・騎手・血統などの要素を総合評価して有力候補を提示します。</p>
+          </div>
+          <div class="text-center p-6">
+            <div class="w-16 h-16 bg-yellow-50 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4">💡</div>
+            <h3 class="font-bold text-gray-900 text-lg mb-2">メンバー専用設計</h3>
+            <p class="text-sm text-gray-500 leading-relaxed">招待制LINEアカウントで管理。承認されたサークルメンバーのみが全機能にアクセスできます。スマホから全操作完結。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main class="flex-grow max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-28">
+
+      <!-- ══ 競馬集中講義 ══ -->
+      <section id="academy" class="scroll-mt-20">
+        <div class="text-center mb-14">
+          <span class="inline-block text-turf text-sm font-bold tracking-widest uppercase mb-3">Academy</span>
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">競馬集中講義</h2>
+          <p class="text-gray-500 max-w-xl mx-auto">Botの予測を最大限に活かすための理論と知識のベースライン。3ステップで体系的に学びます。</p>
+        </div>
+
+        <!-- ステップカード -->
+        <div class="grid md:grid-cols-3 gap-6 mb-10">
+
+          <!-- Step 1 -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden card-hover">
+            <div class="bg-gradient-to-br from-blue-50 to-blue-100 px-6 py-5 flex items-center gap-3">
+              <div class="num-badge bg-blue-600">1</div>
+              <div>
+                <div class="text-xs text-blue-500 font-bold uppercase tracking-wide">Step 1</div>
+                <h3 class="font-bold text-gray-900">基礎と歴史</h3>
+              </div>
+            </div>
+            <div class="divide-y divide-gray-50">
+              <a href="03_overview.html" class="group block p-5 hover:bg-gray-50 transition">
+                <div class="flex items-start gap-3">
+                  <i class="fa-solid fa-book text-blue-400 mt-0.5 w-4 flex-shrink-0"></i>
+                  <div>
+                    <h4 class="font-bold text-gray-900 group-hover:text-turf transition text-sm mb-1">概観：競馬の全体像と日本競馬の歴史</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed">レース体系・環境の歴史的変化と、日本独自のスタッドシステムが馬の進化を促してきた背景を学ぶ。</p>
+                  </div>
+                </div>
+              </a>
+              <a href="04_thoroughbred.html" class="group block p-5 hover:bg-gray-50 transition">
+                <div class="flex items-start gap-3">
+                  <i class="fa-solid fa-dna text-blue-400 mt-0.5 w-4 flex-shrink-0"></i>
+                  <div>
+                    <h4 class="font-bold text-gray-900 group-hover:text-turf transition text-sm mb-1">基礎：サラブレッドとは何か？</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed">3大始祖から続く血の歴史と、極限まで選育・淘汰されたエンジンとしての構造を理解する。</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden card-hover">
+            <div class="bg-gradient-to-br from-yellow-50 to-amber-100 px-6 py-5 flex items-center gap-3">
+              <div class="num-badge bg-amber-500">2</div>
+              <div>
+                <div class="text-xs text-amber-600 font-bold uppercase tracking-wide">Step 2</div>
+                <h3 class="font-bold text-gray-900">投資の論理</h3>
+              </div>
+            </div>
+            <div class="divide-y divide-gray-50">
+              <a href="01_tickets.html" class="group block p-5 hover:bg-gray-50 transition">
+                <div class="flex items-start gap-3">
+                  <i class="fa-solid fa-ticket text-amber-400 mt-0.5 w-4 flex-shrink-0"></i>
+                  <div>
+                    <h4 class="font-bold text-gray-900 group-hover:text-turf transition text-sm mb-1">入門：JRAの馬券の種類と買い方</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed">初心者が迷いがちな馬券選択術。単勝・複勝から三連単まで、仕組みを正確に理解する。</p>
+                  </div>
+                </div>
+              </a>
+              <a href="02_expectation.html" class="group block p-5 hover:bg-gray-50 transition">
+                <div class="flex items-start gap-3">
+                  <i class="fa-solid fa-triangle-exclamation text-red-400 mt-0.5 w-4 flex-shrink-0"></i>
+                  <div>
+                    <h4 class="font-bold text-red-600 group-hover:text-red-500 transition text-sm mb-1">重要：控除率と期待値</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed">短期の快楽・罪中に流されず、期待値という「論理」で行動を制御することが投資競馬の第一歩。</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden card-hover">
+            <div class="bg-gradient-to-br from-purple-50 to-purple-100 px-6 py-5 flex items-center gap-3">
+              <div class="num-badge bg-purple-600">3</div>
+              <div>
+                <div class="text-xs text-purple-500 font-bold uppercase tracking-wide">Step 3</div>
+                <h3 class="font-bold text-gray-900">血統の深淵</h3>
+              </div>
+            </div>
+            <div class="divide-y divide-gray-50">
+              <a href="05_pedigree_1.html" class="group block p-5 hover:bg-gray-50 transition">
+                <div class="flex items-start gap-3">
+                  <i class="fa-solid fa-sitemap text-purple-400 mt-0.5 w-4 flex-shrink-0"></i>
+                  <div>
+                    <h4 class="font-bold text-gray-900 group-hover:text-turf transition text-sm mb-1">血統①：血統表の読み方入門</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed">血統表は「遺伝的ポテンシャルの設計図」。サイアーラインとファミリーラインから適性を読み解く。</p>
+                  </div>
+                </div>
+              </a>
+              <a href="06_pedigree_2.html" class="group block p-5 hover:bg-gray-50 transition">
+                <div class="flex items-start gap-3">
+                  <i class="fa-solid fa-arrows-spin text-purple-400 mt-0.5 w-4 flex-shrink-0"></i>
+                  <div>
+                    <h4 class="font-bold text-gray-900 group-hover:text-turf transition text-sm mb-1">血統②：インブリードとクロス</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed">スピードや特性を定着させるインブリードと、相性の良い血の組み合わせ（クロス）の理論。</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 近日公開予告 -->
+        <div class="bg-gray-50 border border-dashed border-gray-200 rounded-2xl p-6 text-center">
+          <div class="text-gray-400 text-2xl mb-2">🚧</div>
+          <div class="font-medium text-gray-600 text-sm">Step 4以降（馬場バイアス・ペース理論・ラップ分析）は順次公開予定</div>
+        </div>
+      </section>
+
+      <!-- ══ 操作ガイド ══ -->
+      <section id="guide" class="scroll-mt-20">
+        <div class="bg-dark text-white rounded-3xl p-8 md:p-12 shadow-xl relative overflow-hidden">
+          <!-- 背景装飾 -->
+          <div class="absolute top-0 right-0 p-8 opacity-5">
+            <i class="fa-solid fa-server text-white" style="font-size:12rem"></i>
+          </div>
+          <div class="absolute bottom-0 left-0 p-8 opacity-5">
+            <i class="fa-brands fa-line text-white" style="font-size:10rem"></i>
+          </div>
+          <div class="relative z-10 md:w-2/3">
+            <span class="inline-block text-green-400 text-sm font-bold tracking-widest uppercase mb-4">Manual</span>
+            <h2 class="text-3xl font-bold mb-4">システム操作ガイド</h2>
+            <p class="text-gray-300 mb-8 leading-relaxed">
+              LINE公式アカウントおよびDiscord経由でのAIエンジンの具体的な操作方法、コマンドリファレンス、バイアス・スコアといった出力パラメータの読み方を解説します。
+            </p>
+            <ul class="space-y-3 mb-8 text-gray-300 text-sm">
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-chevron-right text-line text-xs"></i>
+                予測ウィザード（開催場 → レース → プロファイル → 期間 → 結果）の5ステップ
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-chevron-right text-line text-xs"></i>
+                スコアの計算ロジックと予測プロファイル5種の重み付け
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-chevron-right text-line text-xs"></i>
+                馬場状態・天候・除外馬を変えた条件変更と再予測
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-chevron-right text-line text-xs"></i>
+                過去成績DB検索・収支管理・通知設定の操作方法
+              </li>
+            </ul>
+            <a href="guide.html"
+               class="inline-flex items-center gap-2 bg-white text-dark font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition shadow-md">
+              <i class="fa-solid fa-book-open"></i> マニュアルを読む
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ 参加方法 ══ -->
+      <section id="join" class="scroll-mt-20">
+        <div class="text-center mb-14">
+          <span class="inline-block text-turf text-sm font-bold tracking-widest uppercase mb-3">How to Join</span>
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">参加方法</h2>
+          <p class="text-gray-500 max-w-xl mx-auto">本サービスは<strong>招待制</strong>です。管理者の承認を受けたサークルメンバーのみ全機能を利用できます。</p>
+        </div>
+
+        <div class="max-w-3xl mx-auto">
+          <div class="space-y-1">
+            <!-- Step 1 -->
+            <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 flex items-start gap-5">
+              <div class="num-badge flex-shrink-0 text-lg">1</div>
+              <div class="flex-grow">
+                <div class="font-bold text-gray-900 mb-1">LINEで公式アカウントを友だち追加</div>
+                <p class="text-sm text-gray-500 mb-3">下のボタンから「研究室『馬研』」を友だちに追加します。</p>
+                <a href="https://lin.ee/9SwaqSP" target="_blank"
+                   class="inline-flex items-center gap-2 bg-line hover:bg-green-600 text-white font-bold py-2 px-5 rounded-full text-sm transition shadow-sm">
+                  <i class="fa-brands fa-line"></i> 友だち追加
+                </a>
+              </div>
+            </div>
+            <div class="flex justify-center py-1">
+              <i class="fa-solid fa-chevron-down text-gray-300"></i>
+            </div>
+            <!-- Step 2 -->
+            <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 flex items-start gap-5">
+              <div class="num-badge flex-shrink-0 text-lg">2</div>
+              <div>
+                <div class="font-bold text-gray-900 mb-1">「📩 招待を申請する」をタップ</div>
+                <p class="text-sm text-gray-500">友だち追加後に表示されるメニューから申請ボタンをタップします。管理者に申請通知が届きます。</p>
+              </div>
+            </div>
+            <div class="flex justify-center py-1">
+              <i class="fa-solid fa-chevron-down text-gray-300"></i>
+            </div>
+            <!-- Step 3 -->
+            <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 flex items-start gap-5">
+              <div class="num-badge flex-shrink-0 text-lg">3</div>
+              <div>
+                <div class="font-bold text-gray-900 mb-1">管理者が承認 → ウェルカムメッセージが届く</div>
+                <p class="text-sm text-gray-500">承認が完了するとウェルカムメッセージと利用案内が届き、全機能が解放されます。</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 bg-amber-50 border border-amber-200 rounded-2xl p-5 flex gap-3">
+            <i class="fa-solid fa-circle-info text-amber-500 mt-0.5 flex-shrink-0"></i>
+            <p class="text-sm text-amber-700">
+              本サービスはサークルメンバー限定のため、サークルに所属していない方の承認はお断りする場合があります。ご了承ください。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ サポート ══ -->
+      <section id="support" class="scroll-mt-20 border-t border-gray-100 pt-20">
+        <div class="text-center mb-12">
+          <h2 class="text-2xl font-bold text-gray-900 mb-2">サポート & コンタクト</h2>
+          <p class="text-gray-500 text-sm">ご不明点・不具合はお気軽にご連絡ください。</p>
+        </div>
+        <div class="max-w-3xl mx-auto grid sm:grid-cols-2 gap-5">
+          <!-- 不具合報告 -->
+          <a href="https://forms.gle/AkEFunUoJQtxybne6" target="_blank"
+             class="group bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-red-200 transition card-hover block">
+            <div class="text-red-500 text-3xl mb-4"><i class="fa-solid fa-bug"></i></div>
+            <h3 class="font-bold text-gray-900 mb-2">不具合報告・要望</h3>
+            <p class="text-sm text-gray-500 mb-4">システムのバグ、改善要望はこちらのフォームからご報告ください。</p>
+            <span class="text-blue-600 group-hover:text-blue-800 text-sm font-bold inline-flex items-center gap-1">
+              Googleフォームを開く <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+            </span>
+          </a>
+          <!-- メール -->
+          <a href="mailto:horserace1220@gmail.com"
+             class="group bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-gray-300 transition card-hover block">
+            <div class="text-gray-400 text-3xl mb-4"><i class="fa-solid fa-envelope"></i></div>
+            <h3 class="font-bold text-gray-900 mb-2">管理者へ直接連絡</h3>
+            <p class="text-sm text-gray-500 mb-4">フォームで対応できない件はメールでお問い合わせください。</p>
+            <span class="text-gray-800 group-hover:text-turf font-medium transition text-sm">
+              horserace1220@gmail.com
+            </span>
+          </a>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ══ フッター ══ -->
+    <footer class="bg-dark text-white py-14 mt-auto">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-3 gap-10 mb-10">
+          <!-- ブランド -->
+          <div>
+            <div class="flex items-center gap-2 mb-4">
+              <div class="w-8 h-8 bg-turf rounded-lg flex items-center justify-center">
+                <i class="fa-solid fa-horse-head text-white text-sm"></i>
+              </div>
+              <span class="text-lg font-extrabold">研究室『馬研』</span>
+            </div>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              データと論理で競馬の本質に迫るサークルメンバー専用プラットフォーム。AI予測・成績DB・収支管理をLINEから利用できます。
+            </p>
+            <div class="flex gap-4 mt-5">
+              <a href="https://www.facebook.com/horserace.analytics" target="_blank"
+                 class="text-gray-400 hover:text-blue-400 transition text-xl" title="Facebook">
+                <i class="fa-brands fa-facebook"></i>
+              </a>
+              <a href="https://lin.ee/9SwaqSP" target="_blank"
+                 class="text-gray-400 hover:text-line transition text-xl" title="LINE">
+                <i class="fa-brands fa-line"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- ナビ -->
+          <div>
+            <div class="font-bold text-sm mb-4 text-gray-300 uppercase tracking-wider">コンテンツ</div>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li><a href="#about" class="hover:text-white transition">このサービスについて</a></li>
+              <li><a href="#academy" class="hover:text-white transition">競馬集中講義</a></li>
+              <li><a href="guide.html" class="hover:text-white transition">操作マニュアル</a></li>
+              <li><a href="#join" class="hover:text-white transition">参加方法</a></li>
+              <li><a href="#support" class="hover:text-white transition">サポート</a></li>
+            </ul>
+          </div>
+
+          <!-- 講義 -->
+          <div>
+            <div class="font-bold text-sm mb-4 text-gray-300 uppercase tracking-wider">講義一覧</div>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li><a href="03_overview.html" class="hover:text-white transition">概観：競馬の全体像と歴史</a></li>
+              <li><a href="04_thoroughbred.html" class="hover:text-white transition">基礎：サラブレッドとは</a></li>
+              <li><a href="01_tickets.html" class="hover:text-white transition">入門：馬券の種類と買い方</a></li>
+              <li><a href="02_expectation.html" class="hover:text-white transition">重要：控除率と期待値</a></li>
+              <li><a href="05_pedigree_1.html" class="hover:text-white transition">血統①：血統表の読み方</a></li>
+              <li><a href="06_pedigree_2.html" class="hover:text-white transition">血統②：インブリードとクロス</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+          <p>
+            ※ 当サイトのデータ・AI予測は競馬の学術的探求を目的としており、馬券の的中を保証するものではありません。
+          </p>
+          <div class="flex items-center gap-5 flex-shrink-0">
+            <a href="policy.html" class="hover:text-white transition">ポリシーと免責事項</a>
+            <span>&copy; <span id="current-year"></span> 研究室『馬研』</span>
+          </div>
+        </div>
+      </div>
+      <script>
+        document.getElementById("current-year").textContent = new Date().getFullYear();
+      </script>
+    </footer>
+
+  </body>
+</html>
