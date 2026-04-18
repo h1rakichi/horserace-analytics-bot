@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>【血統①】血統表の読み方入門 | 馬研アカデミー</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { turf: "#2E8B57", "turf-dark": "#1a5c38", sky: "#E0F2FE", dark: "#1F2937" },
+          fontFamily: { sans: ["Helvetica Neue","Arial","Hiragino Kaku Gothic ProN","Hiragino Sans","Meiryo","sans-serif"] },
+        },
+      },
+    };
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .hero-gradient { background: linear-gradient(135deg, #ccfbf1 0%, #99f6e4 40%, #2dd4bf 100%); }
+    .section-card { background: white; border-radius: 1rem; padding: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,.06); border: 1px solid #f1f5f9; margin-bottom: 1.5rem; }
+    .tag-badge { display:inline-flex; align-items:center; gap:.375rem; background:rgba(20,184,166,.15); color:#0f766e; font-weight:700; font-size:.75rem; padding:.25rem .75rem; border-radius:9999px; }
+    .code-block { background: #0f172a; color: #94a3b8; border-radius: .75rem; padding: 1.25rem 1.5rem; font-family: monospace; font-size: .8rem; line-height: 1.9; overflow-x: auto; white-space: pre; }
+    .pedigree-box { border: 2px solid #e2e8f0; border-radius: .5rem; padding: .5rem .75rem; font-size:.75rem; font-weight:700; text-align:center; white-space:nowrap; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased flex flex-col min-h-screen">
+
+  <!-- Nav -->
+  <nav class="bg-white/90 backdrop-blur-md shadow-sm fixed w-full z-20 top-0 border-b border-green-100">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="text-gray-500 hover:text-turf transition flex items-center gap-2 font-bold text-sm">
+        <i class="fa-solid fa-arrow-left"></i>ポータルへ戻る
+      </a>
+      <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Step 5 / 6</span>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero-gradient pt-24 pb-12 px-4">
+    <div class="max-w-4xl mx-auto">
+      <span class="tag-badge mb-4"><i class="fa-solid fa-dna"></i> 血統①</span>
+      <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-6">
+        血統表の読み方入門
+      </h1>
+      <div class="bg-white/70 backdrop-blur-sm border border-teal-200 rounded-2xl p-5 max-w-2xl">
+        <p class="text-xs font-bold text-teal-700 mb-1"><i class="fa-solid fa-flask mr-1"></i> 生理学メモ</p>
+        <p class="text-gray-800 font-medium leading-relaxed text-sm">
+          「血統表は『遺伝的ポテンシャルの設計図』。ただし、設計図通りに筋肉が付き、心肺機能が育つかは育成環境や調教という『後天的なストレス適応』に依存する。」
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
+
+    <!-- Section 1: 血統表とは -->
+    <div class="section-card">
+      <h2 class="text-xl font-bold text-gray-900 border-l-4 border-teal-400 pl-4 mb-4">血統表とは何か</h2>
+      <p class="text-sm text-gray-700 leading-relaxed mb-5">
+        血統表とは競走馬の<strong class="font-bold text-gray-900">家系図</strong>だ。通常は5代遡って記載される。右に行くほど古い世代、上が父方・下が母方という構造で、見慣れると1枚の紙から馬の「遺伝的履歴」が読み取れるようになる。
+      </p>
+      <div class="code-block">【血統表の構造イメージ（3代）】
+
+           ┌─ 父の父（祖父）
+       ┌─ 父
+       │   └─ 父の母（祖母）
+◯◯（本馬）
+       │   ┌─ 母の父（母父 / BMS）
+       └─ 母
+           └─ 母の母（祖母）</div>
+    </div>
+
+    <!-- Section 2: 4つの用語 -->
+    <div class="section-card">
+      <h2 class="text-xl font-bold text-gray-900 border-l-4 border-teal-400 pl-4 mb-5">まず押さえる4つの用語</h2>
+      <div class="grid gap-3">
+        <div class="flex items-start gap-4 bg-teal-50 border border-teal-100 rounded-xl p-4">
+          <div class="bg-teal-500 text-white font-bold text-xs px-2 py-1 rounded-lg whitespace-nowrap flex-shrink-0">父 / Sire</div>
+          <div>
+            <p class="font-bold text-gray-900 text-sm">直接の父親</p>
+            <p class="text-sm text-gray-600">産駒の能力に最も直接的な影響を与える。サイアーラインの起点。</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4 bg-pink-50 border border-pink-100 rounded-xl p-4">
+          <div class="bg-pink-500 text-white font-bold text-xs px-2 py-1 rounded-lg whitespace-nowrap flex-shrink-0">母 / Dam</div>
+          <div>
+            <p class="font-bold text-gray-900 text-sm">直接の母親</p>
+            <p class="text-sm text-gray-600">気性・体質・牝系の特徴を伝える。ファミリーラインの起点。</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4 bg-amber-50 border border-amber-100 rounded-xl p-4">
+          <div class="bg-amber-500 text-white font-bold text-xs px-2 py-1 rounded-lg whitespace-nowrap flex-shrink-0">母父 / BMS</div>
+          <div>
+            <p class="font-bold text-gray-900 text-sm">母の父（Broodmare Sire）</p>
+            <p class="text-sm text-gray-600">「母父の法則」として知られるほど影響が大きい。父馬の弱点を補う形で産駒に遺伝する。</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4 bg-purple-50 border border-purple-100 rounded-xl p-4">
+          <div class="bg-purple-500 text-white font-bold text-xs px-2 py-1 rounded-lg whitespace-nowrap flex-shrink-0">牝系</div>
+          <div>
+            <p class="font-bold text-gray-900 text-sm">Female / Family Line</p>
+            <p class="text-sm text-gray-600">母→祖母→曽祖母と続く母方の血の流れ。距離適性・早熟性・体質の傾向が受け継がれやすい。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3: 3つのライン -->
+    <div class="section-card">
+      <h2 class="text-xl font-bold text-gray-900 border-l-4 border-teal-400 pl-4 mb-5">3つの「ライン」で血統表を読む</h2>
+      <div class="space-y-4">
+        <!-- サイアーライン -->
+        <div class="border border-teal-200 rounded-xl overflow-hidden">
+          <div class="bg-teal-500 text-white px-5 py-3 flex items-center gap-2">
+            <span class="font-bold text-sm">1. サイアーライン（父系）</span>
+            <span class="text-xs bg-white/20 px-2 py-0.5 rounded-full">血統表の最上段</span>
+          </div>
+          <div class="p-5">
+            <p class="text-sm text-gray-700 leading-relaxed mb-3">
+              血統表の最上段の横の列が父系（サイアーライン）だ。父→父の父→父の父の父…と続く。日本競馬では現在、この父系の大半が<strong class="font-bold text-gray-900">サンデーサイレンス系</strong>か<strong class="font-bold text-gray-900">ノーザンダンサー系</strong>のどちらかに収束している。
+            </p>
+            <div class="code-block text-xs">例：ディープインパクトの父系
+ディープインパクト → サンデーサイレンス → ヘイロー → ヘイルトゥリーズン</div>
+          </div>
+        </div>
+        <!-- ファミリーライン -->
+        <div class="border border-pink-200 rounded-xl overflow-hidden">
+          <div class="bg-pink-500 text-white px-5 py-3">
+            <span class="font-bold text-sm">2. ファミリーライン（牝系）</span>
+            <span class="text-xs bg-white/20 px-2 py-0.5 rounded-full ml-2">血統表の最下段</span>
+          </div>
+          <div class="p-5">
+            <p class="text-sm text-gray-700 leading-relaxed">
+              距離適性・早熟性・体質の強さなど、「一族の傾向」が受け継がれやすい。同じ牝系から複数の活躍馬が出ることが多く、「名牝系」として語り継がれる。
+            </p>
+          </div>
+        </div>
+        <!-- 母父ライン -->
+        <div class="border border-amber-200 rounded-xl overflow-hidden">
+          <div class="bg-amber-500 text-white px-5 py-3">
+            <span class="font-bold text-sm">3. 母父（BMS）ライン</span>
+            <span class="text-xs bg-white/20 px-2 py-0.5 rounded-full ml-2">隠れた主役</span>
+          </div>
+          <div class="p-5">
+            <p class="text-sm text-gray-700 leading-relaxed">
+              母の父は「隠れた主役」と言っていい。父馬の弱点を補う形で産駒に遺伝し、配合の質を左右する。日本のリーディングBMSでキングカメハメハやディープインパクトが上位を占めるのは、彼らが産駒世代を経て「母父」としても機能しているからだ。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 4: 2大勢力 -->
+    <div class="section-card">
+      <h2 class="text-xl font-bold text-gray-900 border-l-4 border-teal-400 pl-4 mb-5">日本競馬の2大勢力</h2>
+      <div class="overflow-x-auto rounded-xl border border-gray-200 shadow-sm">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-teal-600 text-white">
+              <th class="py-3 px-4 text-left font-bold">系統</th>
+              <th class="py-3 px-4 text-left font-bold">代表種牡馬</th>
+              <th class="py-3 px-4 text-left font-bold">特徴</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-teal-50 border-b border-gray-100">
+              <td class="py-3 px-4 font-bold text-teal-900">サンデーサイレンス系</td>
+              <td class="py-3 px-4 text-gray-700">ディープインパクト<br>ハーツクライ<br>キタサンブラック</td>
+              <td class="py-3 px-4 text-gray-700">日本芝への高い適性、スピードと末脚</td>
+            </tr>
+            <tr class="bg-blue-50">
+              <td class="py-3 px-4 font-bold text-blue-900">ノーザンダンサー系</td>
+              <td class="py-3 px-4 text-gray-700">キングカメハメハ<br>ロードカナロア</td>
+              <td class="py-3 px-4 text-gray-700">パワー・ダート適性、欧州型スタミナ</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs text-gray-500 mt-3">この2系統のニックス（相性の良い組み合わせ）が、現代日本の配合の主流だ。</p>
+    </div>
+
+    <!-- Section 5: 読み方の推奨順序 -->
+    <div class="section-card">
+      <h2 class="text-xl font-bold text-gray-900 border-l-4 border-teal-400 pl-4 mb-5">血統表をどこから読むか</h2>
+      <div class="space-y-3">
+        <div class="flex gap-3 items-start bg-gray-50 rounded-xl p-4">
+          <span class="w-6 h-6 bg-teal-500 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0 mt-0.5">1</span>
+          <div>
+            <p class="font-bold text-gray-900 text-sm">父を見る</p>
+            <p class="text-sm text-gray-600">サイアーラインと主な特徴を確認。</p>
+          </div>
+        </div>
+        <div class="flex gap-3 items-start bg-gray-50 rounded-xl p-4">
+          <span class="w-6 h-6 bg-teal-500 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0 mt-0.5">2</span>
+          <div>
+            <p class="font-bold text-gray-900 text-sm">母父を見る</p>
+            <p class="text-sm text-gray-600">父の弱点を補っているか、ニックス関係があるかを確認。</p>
+          </div>
+        </div>
+        <div class="flex gap-3 items-start bg-gray-50 rounded-xl p-4">
+          <span class="w-6 h-6 bg-teal-500 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0 mt-0.5">3</span>
+          <div>
+            <p class="font-bold text-gray-900 text-sm">牝系を見る</p>
+            <p class="text-sm text-gray-600">距離適性・気性の傾向を過去の一族から類推。</p>
+          </div>
+        </div>
+        <div class="flex gap-3 items-start bg-gray-50 rounded-xl p-4">
+          <span class="w-6 h-6 bg-teal-500 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0 mt-0.5">4</span>
+          <div>
+            <p class="font-bold text-gray-900 text-sm">クロス（インブリード）を確認</p>
+            <p class="text-sm text-gray-600">同じ祖先が複数世代に登場していないかをチェック。</p>
+          </div>
+        </div>
+      </div>
+      <div class="mt-5 bg-teal-50 border border-teal-200 rounded-xl p-4 text-sm text-teal-900 font-medium">
+        <i class="fa-solid fa-circle-info mr-2"></i>血統表は「答え」ではなく「仮説を立てるためのツール」として使うのが正しい。設計図が優秀でも、育成と調教という後天的な要素が最終的な馬の能力を決定する。
+      </div>
+    </div>
+
+    <!-- Prev / Next -->
+    <div class="flex justify-between items-center mt-4">
+      <a href="04_thoroughbred.html" class="flex items-center gap-2 text-gray-500 hover:text-turf font-bold text-sm transition">
+        <i class="fa-solid fa-arrow-left"></i> サラブレッドとは
+      </a>
+      <a href="06_pedigree_2.html" class="flex items-center gap-2 bg-turf text-white font-bold text-sm px-5 py-3 rounded-xl hover:bg-turf-dark transition">
+        次の記事：配合の考え方 <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+
+  </main>
+
+  <footer class="bg-dark text-gray-400 py-8 mt-12 text-center text-sm">
+    <p class="mb-1"><span class="text-turf font-bold">競馬スタディ</span> | 馬研アカデミー</p>
+    <p>&copy; <span id="yr"></span> 馬研. All rights reserved.</p>
+    <script>document.getElementById("yr").textContent = new Date().getFullYear();</script>
+  </footer>
+
+</body>
+</html>

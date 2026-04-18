@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>【血統②】配合の考え方（インブリードとニックス） | 馬研アカデミー</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { turf: "#2E8B57", "turf-dark": "#1a5c38", sky: "#E0F2FE", dark: "#1F2937" },
+          fontFamily: { sans: ["Helvetica Neue","Arial","Hiragino Kaku Gothic ProN","Hiragino Sans","Meiryo","sans-serif"] },
+        },
+      },
+    };
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .hero-gradient { background: linear-gradient(135deg, #ffe4e6 0%, #fecdd3 40%, #f43f5e 100%); }
+    .section-card { background: white; border-radius: 1rem; padding: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,.06); border: 1px solid #f1f5f9; margin-bottom: 1.5rem; }
+    .tag-badge { display:inline-flex; align-items:center; gap:.375rem; background:rgba(244,63,94,.15); color:#9f1239; font-weight:700; font-size:.75rem; padding:.25rem .75rem; border-radius:9999px; }
+    .code-block { background: #0f172a; color: #94a3b8; border-radius: .75rem; padding: 1.25rem 1.5rem; font-family: monospace; font-size: .85rem; line-height: 1.8; overflow-x: auto; white-space: pre; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased flex flex-col min-h-screen">
+
+  <!-- Nav -->
+  <nav class="bg-white/90 backdrop-blur-md shadow-sm fixed w-full z-20 top-0 border-b border-green-100">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="text-gray-500 hover:text-turf transition flex items-center gap-2 font-bold text-sm">
+        <i class="fa-solid fa-arrow-left"></i>ポータルへ戻る
+      </a>
+      <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Step 6 / 6</span>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero-gradient pt-24 pb-12 px-4">
+    <div class="max-w-4xl mx-auto">
+      <span class="tag-badge mb-4"><i class="fa-solid fa-microscope"></i> 血統②</span>
+      <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-6">
+        配合の考え方<br class="md:hidden">（インブリードとニックス）
+      </h1>
+      <div class="bg-white/70 backdrop-blur-sm border border-rose-200 rounded-2xl p-5 max-w-2xl">
+        <p class="text-xs font-bold text-rose-700 mb-1"><i class="fa-solid fa-flask mr-1"></i> 生理学メモ</p>
+        <p class="text-gray-800 font-medium leading-relaxed text-sm">
+          「インブリードは特定の優秀な遺伝形質（スピードや筋力）をホモ接合化して定着させる手法だが、同時に脆弱性（気性難や体質弱化）も引き出しやすい。生体システムにおけるトレードオフの典型例。」
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
+
+    <!-- Section 1: 配合とは -->
+    <div class="section-card">
+      <h2 class="text-xl font-bold text-gray-900 border-l-4 border-rose-400 pl-4 mb-4">配合とは何か</h2>
+      <p class="text-sm text-gray-700 leading-relaxed mb-4">
+        種牡馬と繁殖牝馬の組み合わせを<strong class="font-bold text-gray-900">配合</strong>という。どの馬に何を掛け合わせるかは、馬主・生産者が血統表を読み込んで意思決定する、競馬における最初の「投資判断」だ。
+      </p>
+      <div class="flex gap-3">
+        <div class="flex-1 bg-rose-50 border border-rose-200 rounded-xl p-4 text-center">
+          <i class="fa-solid fa-circle-nodes text-rose-500 text-2xl mb-2"></i>
+          <p class="font-bold text-rose-900 text-sm">インブリード</p>
+          <p class="text-xs text-gray-600 mt-1">近親配合・クロス</p>
+        </div>
+        <div class="flex items-center text-gray-300 font-bold text-xl">×</div>
+        <div class="flex-1 bg-blue-50 border border-blue-200 rounded-xl p-4 text-center">
+          <i class="fa-solid fa-arrows-split-up-and-left text-blue-500 text-2xl mb-2"></i>
+          <p class="font-bold text-blue-900 text-sm">ニックス</p>
+          <p class="text-xs text-gray-600 mt-1">相性配合</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 2: インブリード -->
+    <div class="section-card">
+      <h2 class="text-xl font-bold text-gray-900 border-l-4 border-rose-400 pl-4 mb-5">インブリード（クロス）</h2>
+
+      <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 mb-5">
+        <p class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">基本概念</p>
+        <p class="text-sm text-gray-700 leading-relaxed">
+          血統表の5代以内に同じ祖先が複数回登場する配合を<strong class="font-bold text-gray-900">インブリード（クロス）</strong>と呼ぶ。表記は「祖先名 ○×○」で、父方の何代前・母方の何代前かを示す。
+        </p>
+        <div class="code-block mt-3">例：イクイノックスのクロス
+　リファール 5×5×4
+　ヘイロー   4×4</div>
+      </div>
+
+      <div class="bg-rose-50 border border-rose-200 rounded-xl p-4 mb-5">
+        <p class="text-xs font-bold text-rose-700 uppercase tracking-wide mb-2">なぜやるのか</p>
+        <p class="text-sm text-gray-700 leading-relaxed">
+          同一祖先の遺伝子を重複させることで、<strong class="font-bold text-gray-900">その祖先の優秀な形質（スピード・持久力・気性）がホモ接合化され、産駒に固定されやすくなる</strong>。「優れた設計図を2枚重ねることで、その設計が刷り込まれる確率を上げる」操作だ。
+        </p>
+      </div>
+
+      <!-- メリット・デメリット -->
+      <p class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-3">メリット vs デメリット</p>
+      <div class="grid md:grid-cols-2 gap-3 mb-5">
+        <div class="bg-green-50 border border-green-200 rounded-xl p-4">
+          <p class="font-bold text-green-800 text-sm mb-2"><i class="fa-solid fa-circle-plus mr-1"></i> メリット</p>
+          <ul class="text-sm text-gray-700 space-y-1.5">
+            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-green-500 mt-0.5 flex-shrink-0 text-xs"></i> 優秀な形質が産駒に固定されやすい</li>
+            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-green-500 mt-0.5 flex-shrink-0 text-xs"></i> 特定距離・馬場への適性が出やすい</li>
+            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-green-500 mt-0.5 flex-shrink-0 text-xs"></i> 活躍馬を継続的に出しやすい</li>
+          </ul>
+        </div>
+        <div class="bg-red-50 border border-red-200 rounded-xl p-4">
+          <p class="font-bold text-red-800 text-sm mb-2"><i class="fa-solid fa-circle-minus mr-1"></i> デメリット</p>
+          <ul class="text-sm text-gray-700 space-y-1.5">
+            <li class="flex items-start gap-2"><i class="fa-solid fa-xmark text-red-500 mt-0.5 flex-shrink-0 text-xs"></i> 気性難・体質弱化のリスクも同時に高まる</li>
+            <li class="flex items-start gap-2"><i class="fa-solid fa-xmark text-red-500 mt-0.5 flex-shrink-0 text-xs"></i> 近交係数が高すぎると受胎率・育成率が下がる</li>
+            <li class="flex items-start gap-2"><i class="fa-solid fa-xmark text-red-500 mt-0.5 flex-shrink-0 text-xs"></i> 繁殖引退後の配合相手が限られる</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- クロス強度 -->
+      <p class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-3">クロス強度の目安</p>
+      <div class="overflow-x-auto rounded-xl border border-gray-200 shadow-sm">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-rose-500 text-white">
+              <th class="py-3 px-4 text-left font-bold">表記</th>
+              <th class="py-3 px-4 text-center font-bold">強度</th>
+              <th class="py-3 px-4 text-left font-bold">一般的な評価</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-red-100 border-b border-gray-100">
+              <td class="py-3 px-4 font-mono font-bold text-red-800">2×3、3×3</td>
+              <td class="py-3 px-4 text-center">
+                <span class="bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">非常に強い</span>
+              </td>
+              <td class="py-3 px-4 text-gray-700 text-xs">高リスク・高リターン。気性難に注意</td>
+            </tr>
+            <tr class="bg-amber-50 border-b border-gray-100">
+              <td class="py-3 px-4 font-mono font-bold text-amber-800">3×4、4×4</td>
+              <td class="py-3 px-4 text-center">
+                <span class="bg-amber-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">中程度</span>
+              </td>
+              <td class="py-3 px-4 text-gray-700 text-xs">実績馬に多く見られるバランス型</td>
+            </tr>
+            <tr class="bg-green-50">
+              <td class="py-3 px-4 font-mono font-bold text-green-800">4×5、5×5</td>
+              <td class="py-3 px-4 text-center">
+                <span class="bg-green-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">緩やか</span>
+              </td>
+              <td class="py-3 px-4 text-gray-700 text-xs">リスクを抑えつつ特徴を引き出す</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Section 3: アウトブリード -->
+    <div class="section-card">
+      <h2 class="text-xl font-bold text-gray-900 border-l-4 border-rose-400 pl-4 mb-4">アウトブリード（異系交配）</h2>
+      <p class="text-sm text-gray-700 leading-relaxed mb-4">
+        インブリードの対は<strong class="font-bold text-gray-900">アウトブリード</strong>だ。5代以内にクロスを持たない配合で、「不良形質が現れる確率を弱め、活力・生産力・運動能力の向上を期待する」配合とされる。
+      </p>
+      <div class="flex gap-4 text-sm">
+        <div class="flex-1 bg-blue-50 border border-blue-200 rounded-xl p-4 text-center">
+          <p class="font-bold text-blue-900 mb-1">インブリード</p>
+          <p class="text-gray-600 text-xs">「強調」の操作<br>特定の形質を凝縮</p>
+        </div>
+        <div class="flex items-center text-gray-400 font-bold">vs</div>
+        <div class="flex-1 bg-green-50 border border-green-200 rounded-xl p-4 text-center">
+          <p class="font-bold text-green-900 mb-1">アウトブリード</p>
+          <p class="text-gray-600 text-xs">「多様性で底上げ」の操作<br>均整のとれた馬が出やすい</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 4: ニックス -->
+    <div class="section-card">
+      <h2 class="text-xl font-bold text-gray-900 border-l-4 border-rose-400 pl-4 mb-5">ニックス</h2>
+
+      <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-5">
+        <p class="text-xs font-bold text-blue-700 uppercase tracking-wide mb-2">基本概念</p>
+        <p class="text-sm text-gray-700 leading-relaxed">
+          <strong class="font-bold text-gray-900">ニックス</strong>とは、特定の系統同士を組み合わせると活躍馬が出やすい「相性の良さ」のことだ。遺伝学的な厳密な理論というよりも、統計的な実績の積み重ねとして語られることが多い。
+        </p>
+      </div>
+
+      <p class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-3">日本競馬の代表的なニックス</p>
+      <div class="overflow-x-auto rounded-xl border border-gray-200 shadow-sm mb-5">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-blue-600 text-white">
+              <th class="py-3 px-4 text-left font-bold">父系</th>
+              <th class="py-3 px-4 text-left font-bold">母父系</th>
+              <th class="py-3 px-4 text-left font-bold">代表的な産駒</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-white border-b border-gray-100">
+              <td class="py-3 px-4 font-bold text-gray-900">サンデーサイレンス系</td>
+              <td class="py-3 px-4 text-gray-700">ノーザンダンサー系</td>
+              <td class="py-3 px-4 text-gray-700 text-xs">ディープインパクト、ハーツクライ多数</td>
+            </tr>
+            <tr class="bg-blue-50 border-b border-gray-100">
+              <td class="py-3 px-4 font-bold text-gray-900">ディープインパクト系</td>
+              <td class="py-3 px-4 text-gray-700">キングカメハメハ系</td>
+              <td class="py-3 px-4 text-gray-700 text-xs">グランアレグリア、シャフリヤールほか</td>
+            </tr>
+            <tr class="bg-white">
+              <td class="py-3 px-4 font-bold text-gray-900">キタサンブラック系</td>
+              <td class="py-3 px-4 text-gray-700">ノーザンダンサー系</td>
+              <td class="py-3 px-4 text-gray-700 text-xs">イクイノックス（父キタサンブラック×母父ノーザンダンサー系）</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-amber-900">
+        <i class="fa-solid fa-triangle-exclamation mr-2"></i><strong>ニックスはあくまで傾向であり、保証ではない。</strong>配合の相性に馬場・距離・育成環境が重なって初めて能力が発現する。
+      </div>
+    </div>
+
+    <!-- Section 5: 配合理論の使い方 -->
+    <div class="section-card">
+      <h2 class="text-xl font-bold text-gray-900 border-l-4 border-rose-400 pl-4 mb-5">配合理論の使い方</h2>
+      <p class="text-sm text-gray-700 leading-relaxed mb-4">
+        血統表のインブリードとニックスを読む目的は、「この馬には何が強調されているか」を把握することだ。
+      </p>
+      <div class="space-y-3">
+        <div class="flex items-start gap-3 bg-red-50 border border-red-100 rounded-xl p-4">
+          <i class="fa-solid fa-fire text-red-500 mt-0.5 flex-shrink-0"></i>
+          <p class="text-sm text-gray-700"><span class="font-bold text-gray-900">クロスが強い</span>→ その祖先の特徴が色濃く出やすい（長所も短所も）</p>
+        </div>
+        <div class="flex items-start gap-3 bg-blue-50 border border-blue-100 rounded-xl p-4">
+          <i class="fa-solid fa-link text-blue-500 mt-0.5 flex-shrink-0"></i>
+          <p class="text-sm text-gray-700"><span class="font-bold text-gray-900">ニックスが成立している</span>→ 父系と母系が補完し合い、総合力が高まりやすい</p>
+        </div>
+        <div class="flex items-start gap-3 bg-green-50 border border-green-100 rounded-xl p-4">
+          <i class="fa-solid fa-arrows-left-right text-green-500 mt-0.5 flex-shrink-0"></i>
+          <p class="text-sm text-gray-700"><span class="font-bold text-gray-900">アウトブリード</span>→ 均整が取れた丈夫な馬が出やすい</p>
+        </div>
+      </div>
+      <div class="mt-5 bg-gray-900 text-rose-300 rounded-xl p-4 text-sm font-medium">
+        <i class="fa-solid fa-quote-left mr-2 text-rose-500"></i>どれが正解かではなく、<span class="text-yellow-300 font-bold">「この配合は何を狙っているか」を読む視点</span>を持つことが、血統を楽しむコツだ。
+      </div>
+    </div>
+
+    <!-- シリーズ完了バッジ -->
+    <div class="bg-gradient-to-br from-turf/10 to-green-50 border border-turf/20 rounded-2xl p-6 text-center mb-6">
+      <i class="fa-solid fa-graduation-cap text-turf text-3xl mb-3"></i>
+      <h3 class="font-extrabold text-gray-900 text-lg mb-1">競馬スタディ 全6記事 完走！</h3>
+      <p class="text-sm text-gray-600">基礎知識はここまで。次はAI予測を使った実戦へ。</p>
+    </div>
+
+    <!-- Prev / Next -->
+    <div class="flex justify-between items-center mt-4">
+      <a href="05_pedigree_1.html" class="flex items-center gap-2 text-gray-500 hover:text-turf font-bold text-sm transition">
+        <i class="fa-solid fa-arrow-left"></i> 血統表の読み方
+      </a>
+      <a href="index.html" class="flex items-center gap-2 bg-turf text-white font-bold text-sm px-5 py-3 rounded-xl hover:bg-turf-dark transition">
+        ポータルへ戻る <i class="fa-solid fa-house"></i>
+      </a>
+    </div>
+
+  </main>
+
+  <footer class="bg-dark text-gray-400 py-8 mt-12 text-center text-sm">
+    <p class="mb-1"><span class="text-turf font-bold">競馬スタディ</span> | 馬研アカデミー</p>
+    <p>&copy; <span id="yr"></span> 馬研. All rights reserved.</p>
+    <script>document.getElementById("yr").textContent = new Date().getFullYear();</script>
+  </footer>
+
+</body>
+</html>

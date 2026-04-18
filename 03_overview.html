@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>【概観】競馬の全体像と日本競馬の歴史 | 馬研アカデミー</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { turf: "#2E8B57", "turf-dark": "#1a5c38", sky: "#E0F2FE", dark: "#1F2937" },
+          fontFamily: { sans: ["Helvetica Neue","Arial","Hiragino Kaku Gothic ProN","Hiragino Sans","Meiryo","sans-serif"] },
+        },
+      },
+    };
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .hero-gradient { background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 40%, #818cf8 100%); }
+    .section-card { background: white; border-radius: 1rem; padding: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,.06); border: 1px solid #f1f5f9; margin-bottom: 1.5rem; }
+    .tag-badge { display:inline-flex; align-items:center; gap:.375rem; background:rgba(99,102,241,.15); color:#3730a3; font-weight:700; font-size:.75rem; padding:.25rem .75rem; border-radius:9999px; }
+    .timeline-dot { width:1rem; height:1rem; border-radius:9999px; background:#6366f1; flex-shrink:0; margin-top:.25rem; box-shadow:0 0 0 3px rgba(99,102,241,.2); }
+    .milestone-dot { background:#f59e0b; box-shadow:0 0 0 3px rgba(245,158,11,.2); }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased flex flex-col min-h-screen">
+
+  <!-- Nav -->
+  <nav class="bg-white/90 backdrop-blur-md shadow-sm fixed w-full z-20 top-0 border-b border-green-100">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="text-gray-500 hover:text-turf transition flex items-center gap-2 font-bold text-sm">
+        <i class="fa-solid fa-arrow-left"></i>ポータルへ戻る
+      </a>
+      <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Step 3 / 6</span>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero-gradient pt-24 pb-12 px-4">
+    <div class="max-w-4xl mx-auto">
+      <span class="tag-badge mb-4"><i class="fa-solid fa-landmark"></i> 概観</span>
+      <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-6">
+        競馬の全体像と<br>日本競馬の歴史
+      </h1>
+      <div class="bg-white/70 backdrop-blur-sm border border-indigo-200 rounded-2xl p-5 max-w-2xl">
+        <p class="text-xs font-bold text-indigo-700 mb-1"><i class="fa-solid fa-lightbulb mr-1"></i> ワンポイント</p>
+        <p class="text-gray-800 font-medium leading-relaxed text-sm">
+          「環境が生物を淘汰するように、レース体系（環境）の歴史的変化が、日本独自のスピードとスタミナを兼ね備えた馬の進化を促してきた。」
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
+
+    <!-- Section 1: 競馬とは何か -->
+    <div class="section-card">
+      <h2 class="text-xl font-bold text-gray-900 border-l-4 border-indigo-400 pl-4 mb-4">競馬とは何か</h2>
+      <p class="text-gray-700 leading-relaxed text-sm mb-4">
+        競馬は単なる「馬のレース」ではなく、<strong class="font-bold text-gray-900">血統・育成・騎乗・調教が複合した生体パフォーマンスの競技</strong>だ。馬主・調教師・騎手・生産者それぞれの思惑が交差し、その結果がオッズと馬券という形で市場に反映される。
+      </p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-3 text-center">
+          <i class="fa-solid fa-dna text-indigo-500 text-xl mb-2"></i>
+          <p class="text-xs font-bold text-indigo-900">血統</p>
+        </div>
+        <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-3 text-center">
+          <i class="fa-solid fa-seedling text-indigo-500 text-xl mb-2"></i>
+          <p class="text-xs font-bold text-indigo-900">育成</p>
+        </div>
+        <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-3 text-center">
+          <i class="fa-solid fa-person-running text-indigo-500 text-xl mb-2"></i>
+          <p class="text-xs font-bold text-indigo-900">騎乗</p>
+        </div>
+        <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-3 text-center">
+          <i class="fa-solid fa-stopwatch text-indigo-500 text-xl mb-2"></i>
+          <p class="text-xs font-bold text-indigo-900">調教</p>
+        </div>
+      </div>
+      <p class="text-gray-700 leading-relaxed text-sm mt-4">
+        日本では<strong class="font-bold text-gray-900">JRA（日本中央競馬会）</strong>が中央競馬を主催し、全国10か所の競馬場でレースを開催している。地方競馬（NAR）と合わせると、日本は世界有数の競馬大国だ。
+      </p>
+    </div>
+
+    <!-- Section 2: 歴史年表 -->
+    <div class="section-card">
+      <h2 class="text-xl font-bold text-gray-900 border-l-4 border-indigo-400 pl-4 mb-6">日本競馬の歴史年表</h2>
+      <div class="relative">
+        <div class="absolute left-2 top-0 bottom-0 w-0.5 bg-indigo-100"></div>
+        <div class="space-y-5 pl-8">
+          <div class="relative">
+            <div class="timeline-dot absolute -left-6"></div>
+            <div class="bg-gray-50 rounded-xl p-4">
+              <span class="text-xs font-bold text-indigo-600 font-mono">1954</span>
+              <p class="text-sm text-gray-700 mt-1">JRA（日本中央競馬会）設立。国営競馬を引き継ぎ特殊法人化。</p>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="timeline-dot absolute -left-6"></div>
+            <div class="bg-gray-50 rounded-xl p-4">
+              <span class="text-xs font-bold text-indigo-600 font-mono">1959</span>
+              <p class="text-sm text-gray-700 mt-1">栗東・美浦のトレーニングセンター整備が本格化。</p>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="milestone-dot absolute -left-6"></div>
+            <div class="bg-amber-50 border border-amber-200 rounded-xl p-4">
+              <span class="text-xs font-bold text-amber-600 font-mono">1981 ★</span>
+              <p class="text-sm font-bold text-gray-900 mt-1">ジャパンカップ創設</p>
+              <p class="text-sm text-gray-700">日本初の国際招待競走、「世界に通用する馬づくり」を掲げる。</p>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="milestone-dot absolute -left-6"></div>
+            <div class="bg-amber-50 border border-amber-200 rounded-xl p-4">
+              <span class="text-xs font-bold text-amber-600 font-mono">1984 ★</span>
+              <p class="text-sm font-bold text-gray-900 mt-1">グレード制（G1・G2・G3）導入</p>
+              <p class="text-sm text-gray-700">重賞競走に格付けが生まれ、レースのブランド化が進む。</p>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="timeline-dot absolute -left-6"></div>
+            <div class="bg-gray-50 rounded-xl p-4">
+              <span class="text-xs font-bold text-indigo-600 font-mono">1992</span>
+              <p class="text-sm text-gray-700 mt-1">ジャパンカップが国際G1競走に認定。日本競馬が世界基準に接続。</p>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="timeline-dot absolute -left-6"></div>
+            <div class="bg-gray-50 rounded-xl p-4">
+              <span class="text-xs font-bold text-indigo-600 font-mono">1997</span>
+              <p class="text-sm text-gray-700 mt-1">中央・地方の統一ダートグレード制スタート。</p>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="timeline-dot absolute -left-6"></div>
+            <div class="bg-gray-50 rounded-xl p-4">
+              <span class="text-xs font-bold text-indigo-600 font-mono">2010</span>
+              <p class="text-sm text-gray-700 mt-1">JRAの平地全重賞が国際開放、格付けが完全に国際基準へ。</p>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="milestone-dot absolute -left-6"></div>
+            <div class="bg-amber-50 border border-amber-200 rounded-xl p-4">
+              <span class="text-xs font-bold text-amber-600 font-mono">2023〜現在 ★</span>
+              <p class="text-sm font-bold text-gray-900 mt-1">日本馬が世界の常連に</p>
+              <p class="text-sm text-gray-700">ドバイ・凱旋門賞・BCなど海外G1で日本馬が常連に。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3: 3つの転換点 -->
+    <div class="section-card">
+      <h2 class="text-xl font-bold text-gray-900 border-l-4 border-indigo-400 pl-4 mb-6">3つの転換点</h2>
+      <div class="grid gap-4">
+        <div class="bg-gradient-to-r from-indigo-50 to-white border border-indigo-200 rounded-xl p-5">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="bg-indigo-500 text-white font-bold text-xs px-2 py-0.5 rounded-full">1981</span>
+            <h3 class="font-bold text-indigo-900">ジャパンカップ創設</h3>
+          </div>
+          <p class="text-sm text-gray-700 leading-relaxed">当時の日本馬は海外遠征でほとんど結果を出せていなかった。「外国馬を呼んで、実力差を直視しよう」という発想で生まれたジャパンカップ。最初は外国馬に圧倒されたが、この「環境圧」が日本の馬産・育成を急速に進化させた。</p>
+        </div>
+        <div class="bg-gradient-to-r from-indigo-50 to-white border border-indigo-200 rounded-xl p-5">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="bg-indigo-500 text-white font-bold text-xs px-2 py-0.5 rounded-full">1984</span>
+            <h3 class="font-bold text-indigo-900">グレード制導入</h3>
+          </div>
+          <p class="text-sm text-gray-700 leading-relaxed">G1・G2・G3という格付けが導入され、レースに「序列」が生まれた。それまで別格とされていた八大競走に加え、宝塚記念・安田記念・マイルCSなど15競走がG1に認定。この体系化が、馬の「目標設定」と「ローテーション戦略」を生み出した。</p>
+        </div>
+        <div class="bg-gradient-to-r from-indigo-50 to-white border border-indigo-200 rounded-xl p-5">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="bg-indigo-500 text-white font-bold text-xs px-2 py-0.5 rounded-full">2000s〜</span>
+            <h3 class="font-bold text-indigo-900">日本馬の世界制覇</h3>
+          </div>
+          <p class="text-sm text-gray-700 leading-relaxed">外国馬を招いた「守勢」から、海外G1を獲りに行く「攻勢」へ。ディープインパクト・オルフェーヴル・イクイノックスらが凱旋門賞・ドバイ・香港で世界と互角以上に。日本独自の「スピードとスタミナの高次元融合」が育種環境の進化によって結実した。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 4: JRAの仕組み -->
+    <div class="section-card">
+      <h2 class="text-xl font-bold text-gray-900 border-l-4 border-indigo-400 pl-4 mb-5">JRAの仕組みを知る</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="flex items-start gap-3 bg-gray-50 rounded-xl p-4">
+          <i class="fa-solid fa-calendar-days text-indigo-500 mt-0.5 flex-shrink-0"></i>
+          <div>
+            <p class="font-bold text-gray-900 text-sm">開催</p>
+            <p class="text-sm text-gray-600">毎週土日（年間約3,000レース）、東西10場で実施。</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 bg-gray-50 rounded-xl p-4">
+          <i class="fa-solid fa-coins text-indigo-500 mt-0.5 flex-shrink-0"></i>
+          <div>
+            <p class="font-bold text-gray-900 text-sm">賞金の源泉</p>
+            <p class="text-sm text-gray-600">馬券売上の一部がJRAの収益→賞金・施設整備・畜産振興へ。</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 bg-gray-50 rounded-xl p-4">
+          <i class="fa-solid fa-medal text-indigo-500 mt-0.5 flex-shrink-0"></i>
+          <div>
+            <p class="font-bold text-gray-900 text-sm">格付け</p>
+            <p class="text-sm text-gray-600">G1（最上位）→G2→G3→オープン→条件戦という序列。</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 bg-gray-50 rounded-xl p-4">
+          <i class="fa-solid fa-crown text-indigo-500 mt-0.5 flex-shrink-0"></i>
+          <div>
+            <p class="font-bold text-gray-900 text-sm">3大競走（クラシック）</p>
+            <p class="text-sm text-gray-600">牡馬：皐月賞・日本ダービー・菊花賞。牝馬：桜花賞・オークス・秋華賞。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Prev / Next -->
+    <div class="flex justify-between items-center mt-4">
+      <a href="02_expectation.html" class="flex items-center gap-2 text-gray-500 hover:text-turf font-bold text-sm transition">
+        <i class="fa-solid fa-arrow-left"></i> 控除率と期待値
+      </a>
+      <a href="04_thoroughbred.html" class="flex items-center gap-2 bg-turf text-white font-bold text-sm px-5 py-3 rounded-xl hover:bg-turf-dark transition">
+        次の記事：サラブレッドとは <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+
+  </main>
+
+  <footer class="bg-dark text-gray-400 py-8 mt-12 text-center text-sm">
+    <p class="mb-1"><span class="text-turf font-bold">競馬スタディ</span> | 馬研アカデミー</p>
+    <p>&copy; <span id="yr"></span> 馬研. All rights reserved.</p>
+    <script>document.getElementById("yr").textContent = new Date().getFullYear();</script>
+  </footer>
+
+</body>
+</html>

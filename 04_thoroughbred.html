@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>【基礎】サラブレッドとは何か？ | 馬研アカデミー</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { turf: "#2E8B57", "turf-dark": "#1a5c38", sky: "#E0F2FE", dark: "#1F2937" },
+          fontFamily: { sans: ["Helvetica Neue","Arial","Hiragino Kaku Gothic ProN","Hiragino Sans","Meiryo","sans-serif"] },
+        },
+      },
+    };
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .hero-gradient { background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 40%, #a855f7 100%); }
+    .section-card { background: white; border-radius: 1rem; padding: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,.06); border: 1px solid #f1f5f9; margin-bottom: 1.5rem; }
+    .tag-badge { display:inline-flex; align-items:center; gap:.375rem; background:rgba(168,85,247,.15); color:#6b21a8; font-weight:700; font-size:.75rem; padding:.25rem .75rem; border-radius:9999px; }
+    .energy-bar { height:.5rem; border-radius:9999px; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased flex flex-col min-h-screen">
+
+  <!-- Nav -->
+  <nav class="bg-white/90 backdrop-blur-md shadow-sm fixed w-full z-20 top-0 border-b border-green-100">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="text-gray-500 hover:text-turf transition flex items-center gap-2 font-bold text-sm">
+        <i class="fa-solid fa-arrow-left"></i>ポータルへ戻る
+      </a>
+      <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Step 4 / 6</span>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero-gradient pt-24 pb-12 px-4">
+    <div class="max-w-4xl mx-auto">
+      <span class="tag-badge mb-4"><i class="fa-solid fa-horse"></i> 基礎</span>
+      <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-6">
+        サラブレッドとは何か？
+      </h1>
+      <div class="bg-white/70 backdrop-blur-sm border border-purple-200 rounded-2xl p-5 max-w-2xl">
+        <p class="text-xs font-bold text-purple-700 mb-1"><i class="fa-solid fa-flask mr-1"></i> 生理学メモ</p>
+        <p class="text-gray-800 font-medium leading-relaxed text-sm">
+          「サラブレッドは体重の約50%以上が骨格筋であり、VO₂max（最大酸素摂取量）は人のエリートマラソン選手を遥かに凌ぐ。単に『速い動物』ではなく、極限まで有酸素・無酸素エンジンを最適化された生体マシンとして捉えよう。」
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
+
+    <!-- Section 1: 意味 -->
+    <div class="section-card">
+      <h2 class="text-xl font-bold text-gray-900 border-l-4 border-purple-400 pl-4 mb-4">「サラブレッド」の意味</h2>
+      <div class="bg-purple-50 border border-purple-200 rounded-xl p-5 mb-4">
+        <p class="text-sm font-bold text-purple-900 mb-1">Thoroughbred = thorough（完璧な）＋ bred（育種された）</p>
+        <p class="text-sm text-gray-700">「純粋に育て上げられた品種」を意味する固有名詞。すべての競走馬がサラブレッドなわけではなく、アラブ種やアングロアラブ種など別品種の競走馬も存在する。</p>
+      </div>
+      <p class="text-sm text-gray-700 leading-relaxed">
+        競馬でいうサラブレッドは、<strong class="font-bold text-gray-900">特定の血統登録基準を満たし、ジェネラルスタッドブック（GSB）に登録された馬だけ</strong>を指す。日本では2025年に年間8,233頭が生産登録されている。
+      </p>
+    </div>
+
+    <!-- Section 2: 三大始祖 -->
+    <div class="section-card">
+      <h2 class="text-xl font-bold text-gray-900 border-l-4 border-purple-400 pl-4 mb-4">三大始祖：全ての血はここから始まった</h2>
+      <p class="text-sm text-gray-700 leading-relaxed mb-5">
+        世界中の現存するサラブレッドの父系を遡ると、必ず3頭の馬にたどり着く。これを<strong class="font-bold text-gray-900">三大始祖</strong>と呼ぶ。この3頭以外の種牡馬の父系子孫は、現在すべて絶えている。
+      </p>
+      <div class="overflow-x-auto rounded-xl border border-gray-200 shadow-sm">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-purple-600 text-white">
+              <th class="py-3 px-4 text-left font-bold">始祖名</th>
+              <th class="py-3 px-4 text-center font-bold">推定生年</th>
+              <th class="py-3 px-4 text-left font-bold">特記事項</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-gray-100 bg-purple-50">
+              <td class="py-3 px-4 font-bold text-gray-900">ダーレーアラビアン</td>
+              <td class="py-3 px-4 text-center font-mono text-gray-700">1700年頃</td>
+              <td class="py-3 px-4 text-gray-700">現代サラブレッドの<strong class="text-purple-700">約90%以上</strong>が本馬の父系子孫</td>
+            </tr>
+            <tr class="border-b border-gray-100 bg-white">
+              <td class="py-3 px-4 font-bold text-gray-900">バイアリーターク</td>
+              <td class="py-3 px-4 text-center font-mono text-gray-700">1680年頃</td>
+              <td class="py-3 px-4 text-gray-700">三大始祖の中で最も古く、軍馬として活躍</td>
+            </tr>
+            <tr class="bg-white">
+              <td class="py-3 px-4 font-bold text-gray-900">ゴドルフィンアラビアン</td>
+              <td class="py-3 px-4 text-center font-mono text-gray-700">1724年頃</td>
+              <td class="py-3 px-4 text-gray-700">ゴドルフィンバルブとも呼ばれるアラブ・バルブ系</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Section 3: 生体マシン -->
+    <div class="section-card">
+      <h2 class="text-xl font-bold text-gray-900 border-l-4 border-purple-400 pl-4 mb-4">生体マシンとしてのサラブレッド</h2>
+      <p class="text-sm text-gray-700 leading-relaxed mb-5">
+        サラブレッドが「速い」のは偶然ではなく、300年以上の<strong class="font-bold text-gray-900">選択的育種</strong>の結果だ。競馬のレース距離によって、エネルギー供給の比率が変わる。
+      </p>
+
+      <!-- Energy chart -->
+      <div class="space-y-4 mb-6">
+        <div class="bg-gray-50 rounded-xl p-4">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold text-gray-700">スプリント（1,000m / 約57秒）</span>
+            <span class="text-xs text-gray-500">有酸素 70% / 無酸素 30%</span>
+          </div>
+          <div class="flex gap-1 h-3">
+            <div class="energy-bar bg-green-400 flex-grow" style="flex:70"></div>
+            <div class="energy-bar bg-red-400 flex-grow" style="flex:30"></div>
+          </div>
+          <div class="flex gap-3 mt-1.5 text-xs text-gray-500">
+            <span><span class="inline-block w-2 h-2 rounded-full bg-green-400 mr-1"></span>有酸素</span>
+            <span><span class="inline-block w-2 h-2 rounded-full bg-red-400 mr-1"></span>無酸素</span>
+          </div>
+        </div>
+        <div class="bg-gray-50 rounded-xl p-4">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold text-gray-700">マイル〜中距離（1,600〜2,000m / 約99秒）</span>
+            <span class="text-xs text-gray-500">有酸素 79% / 無酸素 21%</span>
+          </div>
+          <div class="flex gap-1 h-3">
+            <div class="energy-bar bg-green-400" style="width:79%"></div>
+            <div class="energy-bar bg-red-400" style="width:21%"></div>
+          </div>
+        </div>
+        <div class="bg-gray-50 rounded-xl p-4">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold text-gray-700">長距離（2,400m以上 / 約165秒）</span>
+            <span class="text-xs text-gray-500">有酸素 86% / 無酸素 14%</span>
+          </div>
+          <div class="flex gap-1 h-3">
+            <div class="energy-bar bg-green-400" style="width:86%"></div>
+            <div class="energy-bar bg-red-400" style="width:14%"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-purple-50 border border-purple-200 rounded-xl p-5">
+        <h3 class="font-bold text-purple-900 mb-2 text-sm"><i class="fa-solid fa-dumbbell mr-2"></i>骨格筋の特異性</h3>
+        <p class="text-sm text-gray-700 leading-relaxed">
+          骨格筋には主に「遅筋（type I）」「速筋（type IIA）」「超速筋（type IIX）」の3種類があるが、サラブレッドは<strong class="font-bold text-purple-800">超速筋繊維の割合が特に高い</strong>。体重の50%以上が骨格筋であり、そのエンジン全体を動かす心肺系も極限まで発達している。
+        </p>
+      </div>
+    </div>
+
+    <!-- Section 4: 経済動物 -->
+    <div class="section-card">
+      <h2 class="text-xl font-bold text-gray-900 border-l-4 border-purple-400 pl-4 mb-4">経済動物としての側面</h2>
+      <p class="text-sm text-gray-700 leading-relaxed mb-4">
+        サラブレッドは「生体マシン」であると同時に、<strong class="font-bold text-gray-900">経済動物</strong>でもある。優秀な種牡馬の交配権は数千万円に及ぶことがあり、良血馬の売買は数億円規模になる。
+      </p>
+      <div class="bg-gray-900 text-purple-200 rounded-xl p-5 text-sm leading-relaxed">
+        <p class="font-mono text-xs text-purple-400 mb-2">// 競馬場で走る1頭の馬の背後にあるもの</p>
+        <p>生産牧場 → 育成施設 → 調教師 → 騎手 → 馬主</p>
+        <p class="mt-2 text-gray-400 text-xs">複数のプレイヤーの意思決定が積み重なって初めて、スタートゲートに立つ1頭が生まれる。</p>
+      </div>
+    </div>
+
+    <!-- Prev / Next -->
+    <div class="flex justify-between items-center mt-4">
+      <a href="03_overview.html" class="flex items-center gap-2 text-gray-500 hover:text-turf font-bold text-sm transition">
+        <i class="fa-solid fa-arrow-left"></i> 競馬の全体像と歴史
+      </a>
+      <a href="05_pedigree_1.html" class="flex items-center gap-2 bg-turf text-white font-bold text-sm px-5 py-3 rounded-xl hover:bg-turf-dark transition">
+        次の記事：血統表の読み方 <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+
+  </main>
+
+  <footer class="bg-dark text-gray-400 py-8 mt-12 text-center text-sm">
+    <p class="mb-1"><span class="text-turf font-bold">競馬スタディ</span> | 馬研アカデミー</p>
+    <p>&copy; <span id="yr"></span> 馬研. All rights reserved.</p>
+    <script>document.getElementById("yr").textContent = new Date().getFullYear();</script>
+  </footer>
+
+</body>
+</html>

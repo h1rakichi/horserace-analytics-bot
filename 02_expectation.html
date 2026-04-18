@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>【重要】控除率と期待値 | 馬研アカデミー</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { turf: "#2E8B57", "turf-dark": "#1a5c38", sky: "#E0F2FE", dark: "#1F2937" },
+          fontFamily: { sans: ["Helvetica Neue","Arial","Hiragino Kaku Gothic ProN","Hiragino Sans","Meiryo","sans-serif"] },
+        },
+      },
+    };
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .hero-gradient { background: linear-gradient(135deg, #fef3c7 0%, #fde68a 40%, #fbbf24 100%); }
+    .section-card { background: white; border-radius: 1rem; padding: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,.06); border: 1px solid #f1f5f9; margin-bottom: 1.5rem; }
+    .code-block { background: #1e293b; color: #e2e8f0; border-radius: .75rem; padding: 1.25rem 1.5rem; font-family: monospace; font-size: .9rem; line-height: 1.8; overflow-x: auto; }
+    .tag-badge { display:inline-flex; align-items:center; gap:.375rem; background:rgba(245,158,11,.15); color:#92400e; font-weight:700; font-size:.75rem; padding:.25rem .75rem; border-radius:9999px; }
+    .formula-box { background: #fffbeb; border: 2px dashed #f59e0b; border-radius: .75rem; padding: 1.25rem; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased flex flex-col min-h-screen">
+
+  <!-- Nav -->
+  <nav class="bg-white/90 backdrop-blur-md shadow-sm fixed w-full z-20 top-0 border-b border-green-100">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="text-gray-500 hover:text-turf transition flex items-center gap-2 font-bold text-sm">
+        <i class="fa-solid fa-arrow-left"></i>ポータルへ戻る
+      </a>
+      <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Step 2 / 6</span>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero-gradient pt-24 pb-12 px-4">
+    <div class="max-w-4xl mx-auto">
+      <span class="tag-badge mb-4"><i class="fa-solid fa-chart-line"></i> 重要</span>
+      <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-6">
+        勝ち続けるための<br>「控除率と期待値」
+      </h1>
+      <div class="bg-white/70 backdrop-blur-sm border border-amber-200 rounded-2xl p-5 max-w-2xl">
+        <p class="text-xs font-bold text-amber-700 mb-1"><i class="fa-solid fa-lightbulb mr-1"></i> ワンポイント</p>
+        <p class="text-gray-800 font-medium leading-relaxed text-sm">
+          「短期の快楽（的中）に流されると長期成績はマイナスに収束する。ホメオスタシス（恒常性）に抗い、期待値という『論理』で行動を制御することが投資競馬の第一歩。」
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
+
+    <!-- Section 1: 控除率とは -->
+    <div class="section-card">
+      <h2 class="text-xl font-bold text-gray-900 border-l-4 border-amber-400 pl-4 mb-4">控除率とは何か</h2>
+      <p class="text-gray-700 leading-relaxed text-sm mb-5">
+        馬券を買うとき、JRAは売上金の一部を手数料として徴収する。これが<strong class="font-bold text-gray-900">控除率</strong>だ。たとえば単勝に100円賭けたとき、JRAが徴収するのは平均20円。残り80円が的中者で分配される仕組みだ。つまり<strong class="font-bold text-red-700">何も考えずに買い続ければ、長期的に資金は20%ずつ目減りしていく</strong>。
+      </p>
+      <div class="overflow-x-auto rounded-xl border border-gray-200 shadow-sm">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-amber-500 text-white">
+              <th class="py-3 px-4 text-left font-bold">馬券種</th>
+              <th class="py-3 px-4 text-center font-bold">控除率</th>
+              <th class="py-3 px-4 text-center font-bold">払戻率</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-green-50 border-b border-gray-100">
+              <td class="py-3 px-4 font-bold text-gray-900">単勝・複勝</td>
+              <td class="py-3 px-4 text-center font-mono font-bold text-green-700">20%</td>
+              <td class="py-3 px-4 text-center font-mono font-bold text-gray-700">80%</td>
+            </tr>
+            <tr class="bg-yellow-50 border-b border-gray-100">
+              <td class="py-3 px-4 font-bold text-gray-900">枠連・馬連・ワイド</td>
+              <td class="py-3 px-4 text-center font-mono font-bold text-amber-600">22.5%</td>
+              <td class="py-3 px-4 text-center font-mono font-bold text-gray-700">77.5%</td>
+            </tr>
+            <tr class="bg-red-50 border-b border-gray-100">
+              <td class="py-3 px-4 font-bold text-gray-900">馬単・3連複</td>
+              <td class="py-3 px-4 text-center font-mono font-bold text-red-600">25%</td>
+              <td class="py-3 px-4 text-center font-mono font-bold text-gray-700">75%</td>
+            </tr>
+            <tr class="bg-red-100">
+              <td class="py-3 px-4 font-bold text-gray-900">3連単</td>
+              <td class="py-3 px-4 text-center font-mono font-bold text-red-700">27.5%</td>
+              <td class="py-3 px-4 text-center font-mono font-bold text-gray-700">72.5%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Section 2: 的中率が高くても意味がない -->
+    <div class="section-card">
+      <h2 class="text-xl font-bold text-gray-900 border-l-4 border-amber-400 pl-4 mb-4">「的中率」が高くても意味がない理由</h2>
+      <div class="bg-gray-50 border border-gray-200 rounded-xl p-5 mb-5">
+        <p class="text-sm text-gray-700 leading-relaxed">
+          1,000円持って10レース、毎回100円ずつ複勝を買ったとする。7回当たっても、配当が毎回110円なら手元には770円しか残らない。的中率70%でも<strong class="font-bold text-red-700">回収率は77%</strong>——つまり負けている。
+        </p>
+      </div>
+      <p class="text-gray-700 leading-relaxed text-sm mb-5">
+        競馬で長期的にプラスを出すために追うべき指標は<strong class="font-bold text-gray-900">的中率ではなく回収率</strong>だ。
+      </p>
+      <div class="formula-box">
+        <p class="text-xs font-bold text-amber-700 mb-2 uppercase tracking-wide">Formula</p>
+        <div class="code-block">回収率（%）= 総回収額 ÷ 総投資額 × 100</div>
+        <p class="text-xs text-gray-600 mt-3">回収率100%超えを継続できれば、それは「勝ち続けている」状態を意味する。</p>
+      </div>
+    </div>
+
+    <!-- Section 3: 期待値 -->
+    <div class="section-card">
+      <h2 class="text-xl font-bold text-gray-900 border-l-4 border-amber-400 pl-4 mb-4">期待値という考え方</h2>
+      <p class="text-gray-700 leading-relaxed text-sm mb-4">
+        <strong class="font-bold text-gray-900">期待値</strong>とは、そのオッズが馬の「本来の勝率」に対して割高か割安かを測る指標だ。
+      </p>
+      <div class="formula-box mb-5">
+        <p class="text-xs font-bold text-amber-700 mb-2 uppercase tracking-wide">Formula</p>
+        <div class="code-block">期待値 = オッズ × 自分が推定する勝率</div>
+      </div>
+      <div class="bg-blue-50 border border-blue-200 rounded-xl p-5">
+        <p class="text-xs font-bold text-blue-700 mb-3 uppercase tracking-wide"><i class="fa-solid fa-flask mr-1"></i> 計算例</p>
+        <ul class="text-sm text-gray-700 space-y-2 mb-4">
+          <li>ある馬の単勝オッズが <strong class="text-gray-900">5倍</strong>（払戻率80%込みの実質オッズ）</li>
+          <li>自分の分析では「この馬が勝つ確率は <strong class="text-gray-900">25%</strong>」と判断した場合</li>
+        </ul>
+        <div class="code-block mb-3">期待値 = 5.0 × 0.25 = 1.25</div>
+        <p class="text-sm font-bold text-blue-800">期待値が1.0を超えれば「買う価値がある」、下回れば「見送り」が原則。</p>
+      </div>
+    </div>
+
+    <!-- Section 4: オッズはなぜ歪む -->
+    <div class="section-card">
+      <h2 class="text-xl font-bold text-gray-900 border-l-4 border-amber-400 pl-4 mb-4">オッズはなぜ歪む？</h2>
+      <div class="bg-amber-50 border border-amber-200 rounded-xl p-5 mb-4">
+        <p class="text-sm text-gray-700 leading-relaxed">
+          オッズは馬の実力ではなく、<strong class="font-bold text-gray-900">みんながどれだけ賭けたかで決まる</strong>（パリミュチュエル方式）。人気馬は過剰に買われてオッズが下がりやすく、期待値がマイナスになりやすい。逆に、メディアに取り上げられにくい馬や特定条件に強い馬は見落とされてオッズが歪むことがある。
+        </p>
+      </div>
+      <p class="text-sm text-gray-700 leading-relaxed bg-turf/10 border border-turf/20 rounded-xl px-5 py-4 font-medium">
+        <i class="fa-solid fa-magnifying-glass mr-2 text-turf"></i>この「市場の歪み」を見つけることが、競馬で期待値を高める本質だ。
+      </p>
+    </div>
+
+    <!-- Section 5: 実践 -->
+    <div class="section-card">
+      <h2 class="text-xl font-bold text-gray-900 border-l-4 border-amber-400 pl-4 mb-4">実践：単勝・複勝から始める理由</h2>
+      <div class="space-y-3 mb-5">
+        <div class="flex items-start gap-3">
+          <i class="fa-solid fa-check-circle text-turf mt-0.5 flex-shrink-0"></i>
+          <p class="text-sm text-gray-700">控除率が最も低い（20%）</p>
+        </div>
+        <div class="flex items-start gap-3">
+          <i class="fa-solid fa-check-circle text-turf mt-0.5 flex-shrink-0"></i>
+          <p class="text-sm text-gray-700">自分の「馬の評価精度」が回収率に直結するため、成長が数字で見える</p>
+        </div>
+        <div class="flex items-start gap-3">
+          <i class="fa-solid fa-check-circle text-turf mt-0.5 flex-shrink-0"></i>
+          <p class="text-sm text-gray-700">多点買いで誤魔化しが効かない分、判断力が鍛えられる</p>
+        </div>
+      </div>
+      <div class="bg-gray-900 text-green-400 rounded-xl p-4 text-sm font-mono">
+        まず<span class="text-yellow-300 font-bold">単勝・複勝だけで3ヶ月の回収率を記録する</span>。<br>それが期待値思考を身体に馴染ませる最速ルートだ。
+      </div>
+    </div>
+
+    <!-- Prev / Next -->
+    <div class="flex justify-between items-center mt-4">
+      <a href="01_tickets.html" class="flex items-center gap-2 text-gray-500 hover:text-turf font-bold text-sm transition">
+        <i class="fa-solid fa-arrow-left"></i> 馬券の種類と買い方
+      </a>
+      <a href="03_overview.html" class="flex items-center gap-2 bg-turf text-white font-bold text-sm px-5 py-3 rounded-xl hover:bg-turf-dark transition">
+        次の記事：競馬の全体像と歴史 <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+
+  </main>
+
+  <footer class="bg-dark text-gray-400 py-8 mt-12 text-center text-sm">
+    <p class="mb-1"><span class="text-turf font-bold">競馬スタディ</span> | 馬研アカデミー</p>
+    <p>&copy; <span id="yr"></span> 馬研. All rights reserved.</p>
+    <script>document.getElementById("yr").textContent = new Date().getFullYear();</script>
+  </footer>
+
+</body>
+</html>

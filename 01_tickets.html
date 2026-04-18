@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>【入門】馬券の種類と買い方ガイド | 馬研アカデミー</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { turf: "#2E8B57", "turf-dark": "#1a5c38", sky: "#E0F2FE", dark: "#1F2937" },
+          fontFamily: { sans: ["Helvetica Neue","Arial","Hiragino Kaku Gothic ProN","Hiragino Sans","Meiryo","sans-serif"] },
+        },
+      },
+    };
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .hero-gradient { background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 40%, #6ee7b7 100%); }
+    .section-card { background: white; border-radius: 1rem; padding: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,.06); border: 1px solid #f1f5f9; margin-bottom: 1.5rem; }
+    .ticket-row-easy { background: #f0fdf4; }
+    .ticket-row-mid  { background: #fefce8; }
+    .ticket-row-hard { background: #fff1f2; }
+    .step-num { width:2.25rem; height:2.25rem; border-radius:9999px; background:#2E8B57; color:white; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:.9rem; flex-shrink:0; }
+    .code-block { background: #1e293b; color: #e2e8f0; border-radius: .75rem; padding: 1.25rem 1.5rem; font-family: monospace; font-size: .85rem; line-height:1.7; overflow-x:auto; }
+    .tag-badge { display:inline-flex; align-items:center; gap:.375rem; background:rgba(46,139,87,.15); color:#1a5c38; font-weight:700; font-size:.75rem; padding:.25rem .75rem; border-radius:9999px; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased flex flex-col min-h-screen">
+
+  <!-- Nav -->
+  <nav class="bg-white/90 backdrop-blur-md shadow-sm fixed w-full z-20 top-0 border-b border-green-100">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="text-gray-500 hover:text-turf transition flex items-center gap-2 font-bold text-sm">
+        <i class="fa-solid fa-arrow-left"></i>ポータルへ戻る
+      </a>
+      <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Step 1 / 6</span>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero-gradient pt-24 pb-12 px-4">
+    <div class="max-w-4xl mx-auto">
+      <span class="tag-badge mb-4"><i class="fa-solid fa-ticket"></i> 入門</span>
+      <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-6">
+        JRAの馬券の種類と<br class="md:hidden">買い方ガイド
+      </h1>
+      <!-- One-Point Quote -->
+      <div class="bg-white/70 backdrop-blur-sm border border-green-200 rounded-2xl p-5 max-w-2xl">
+        <p class="text-xs font-bold text-turf mb-1"><i class="fa-solid fa-lightbulb mr-1"></i> ワンポイント</p>
+        <p class="text-gray-800 font-medium leading-relaxed text-sm">
+          「初心者はまず『当てる』ことより『仕組み』を理解すること。筋トレでフォームを固める前に重さだけ追っても怪我をするのと同じ。」
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
+
+    <!-- Section 1: 馬券の種類一覧 -->
+    <div class="section-card">
+      <h2 class="text-xl font-bold text-gray-900 border-l-4 border-turf pl-4 mb-6">馬券の種類一覧</h2>
+      <div class="overflow-x-auto rounded-xl border border-gray-200 shadow-sm">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-turf text-white">
+              <th class="py-3 px-4 text-left font-bold whitespace-nowrap">馬券種</th>
+              <th class="py-3 px-4 text-left font-bold whitespace-nowrap">的中条件</th>
+              <th class="py-3 px-4 text-center font-bold whitespace-nowrap">控除率</th>
+              <th class="py-3 px-4 text-center font-bold whitespace-nowrap">難易度</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="ticket-row-easy border-b border-gray-100">
+              <td class="py-3 px-4 font-bold text-gray-900">単勝</td>
+              <td class="py-3 px-4 text-gray-700">1着を当てる</td>
+              <td class="py-3 px-4 text-center font-mono font-bold text-green-700">20%</td>
+              <td class="py-3 px-4 text-center">★☆☆</td>
+            </tr>
+            <tr class="ticket-row-easy border-b border-gray-100">
+              <td class="py-3 px-4 font-bold text-gray-900">複勝</td>
+              <td class="py-3 px-4 text-gray-700">1頭が3着以内</td>
+              <td class="py-3 px-4 text-center font-mono font-bold text-green-700">20%</td>
+              <td class="py-3 px-4 text-center">★☆☆</td>
+            </tr>
+            <tr class="ticket-row-mid border-b border-gray-100">
+              <td class="py-3 px-4 font-bold text-gray-900">枠連</td>
+              <td class="py-3 px-4 text-gray-700">1・2着の枠番（順不同）</td>
+              <td class="py-3 px-4 text-center font-mono font-bold text-amber-600">22.5%</td>
+              <td class="py-3 px-4 text-center">★★☆</td>
+            </tr>
+            <tr class="ticket-row-mid border-b border-gray-100">
+              <td class="py-3 px-4 font-bold text-gray-900">馬連</td>
+              <td class="py-3 px-4 text-gray-700">1・2着の馬番（順不同）</td>
+              <td class="py-3 px-4 text-center font-mono font-bold text-amber-600">22.5%</td>
+              <td class="py-3 px-4 text-center">★★☆</td>
+            </tr>
+            <tr class="ticket-row-mid border-b border-gray-100">
+              <td class="py-3 px-4 font-bold text-gray-900">ワイド</td>
+              <td class="py-3 px-4 text-gray-700">1頭が3着以内に2頭</td>
+              <td class="py-3 px-4 text-center font-mono font-bold text-amber-600">22.5%</td>
+              <td class="py-3 px-4 text-center">★★☆</td>
+            </tr>
+            <tr class="ticket-row-hard border-b border-gray-100">
+              <td class="py-3 px-4 font-bold text-gray-900">馬単</td>
+              <td class="py-3 px-4 text-gray-700">1・2着の馬番（順番通り）</td>
+              <td class="py-3 px-4 text-center font-mono font-bold text-red-600">25%</td>
+              <td class="py-3 px-4 text-center">★★★</td>
+            </tr>
+            <tr class="ticket-row-hard border-b border-gray-100">
+              <td class="py-3 px-4 font-bold text-gray-900">3連複</td>
+              <td class="py-3 px-4 text-gray-700">1〜3着の馬番（順不同）</td>
+              <td class="py-3 px-4 text-center font-mono font-bold text-red-600">25%</td>
+              <td class="py-3 px-4 text-center">★★★</td>
+            </tr>
+            <tr class="ticket-row-hard">
+              <td class="py-3 px-4 font-bold text-gray-900">3連単</td>
+              <td class="py-3 px-4 text-gray-700">1〜3着の馬番（順番通り）</td>
+              <td class="py-3 px-4 text-center font-mono font-bold text-red-600">27.5%</td>
+              <td class="py-3 px-4 text-center">★★★</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Section 2: 各馬券の特徴 -->
+    <div class="section-card">
+      <h2 class="text-xl font-bold text-gray-900 border-l-4 border-turf pl-4 mb-6">各馬券の特徴</h2>
+      <div class="grid gap-4">
+        <!-- 初心者向け -->
+        <div class="bg-green-50 border border-green-200 rounded-xl p-5">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="w-7 h-7 bg-green-500 rounded-full flex items-center justify-center text-white text-xs font-bold">初</span>
+            <h3 class="font-bold text-green-900">単勝・複勝 — 初心者向け</h3>
+          </div>
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li><span class="font-bold text-gray-900">単勝：</span>1着馬を1頭指定するだけ。最もシンプルで、オッズが直感的に把握しやすい。</li>
+            <li><span class="font-bold text-gray-900">複勝：</span>指定した馬が3着以内に入れば的中。配当は低めだが、当たりやすい。</li>
+            <li class="text-green-800 font-medium">→ 控除率が最も低く（20%）、馬の実力を素直に評価する練習になるため初心者に推奨。</li>
+          </ul>
+        </div>
+        <!-- 中級 -->
+        <div class="bg-amber-50 border border-amber-200 rounded-xl p-5">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="w-7 h-7 bg-amber-500 rounded-full flex items-center justify-center text-white text-xs font-bold">中</span>
+            <h3 class="font-bold text-amber-900">馬連・ワイド — 中級入口</h3>
+          </div>
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li><span class="font-bold text-gray-900">馬連：</span>上位2頭を順不同で当てる。単勝より配当が高く、実用的なバランス。</li>
+            <li><span class="font-bold text-gray-900">ワイド：</span>2頭を選んで両方が3着以内なら的中。的中の間口が広い分、配当は控えめ。</li>
+          </ul>
+        </div>
+        <!-- 上級 -->
+        <div class="bg-red-50 border border-red-200 rounded-xl p-5">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="w-7 h-7 bg-red-500 rounded-full flex items-center justify-center text-white text-xs font-bold">上</span>
+            <h3 class="font-bold text-red-900">馬単・3連複・3連単 — 上級</h3>
+          </div>
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li><span class="font-bold text-gray-900">馬単：</span>馬連より配当が高いが、着順まで当てる必要あり。</li>
+            <li><span class="font-bold text-gray-900">3連複：</span>上位3頭を順不同で当てる。配当は大きいが組み合わせ数が多い。</li>
+            <li><span class="font-bold text-gray-900">3連単：</span>最大難易度。組み合わせは最大4,896通り。高配当狙いだが期待値は最低水準。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3: 買い方の基本フロー -->
+    <div class="section-card">
+      <h2 class="text-xl font-bold text-gray-900 border-l-4 border-turf pl-4 mb-6">買い方の基本フロー</h2>
+      <div class="space-y-4">
+        <div class="flex gap-4 items-start">
+          <div class="step-num">1</div>
+          <div>
+            <p class="font-bold text-gray-900">JRAのサービスを利用する</p>
+            <p class="text-sm text-gray-600 mt-1">現地（競馬場・WINS）ではマークシートで投票機へ。オンラインは即PAT / A-PAT（要口座開設）を利用。</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <div class="step-num">2</div>
+          <div>
+            <p class="font-bold text-gray-900">レースを選ぶ</p>
+            <p class="text-sm text-gray-600 mt-1">開催場・レース番号を確認（例：東京5R）。</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <div class="step-num">3</div>
+          <div>
+            <p class="font-bold text-gray-900">馬券種と買い目を決める</p>
+            <p class="text-sm text-gray-600 mt-1">まずは単勝か複勝で「この馬が来る理由」を言語化する習慣をつける。</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <div class="step-num">4</div>
+          <div>
+            <p class="font-bold text-gray-900">金額を決める</p>
+            <p class="text-sm text-gray-600 mt-1">1点100円〜。最初は<span class="font-bold text-gray-900">少額・少点数</span>で感覚をつかむ。</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <div class="step-num">5</div>
+          <div>
+            <p class="font-bold text-gray-900">購入・確認</p>
+            <p class="text-sm text-gray-600 mt-1">購入控えのレシートで馬番・金額を必ず確認。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 4: 初心者の楽しみ方 -->
+    <div class="section-card">
+      <h2 class="text-xl font-bold text-gray-900 border-l-4 border-turf pl-4 mb-4">初心者の楽しみ方ガイドライン</h2>
+      <p class="text-gray-700 leading-relaxed mb-6 text-sm">
+        競馬の入口は「当てること」じゃなくていい。まず<strong class="font-bold text-gray-900">推し馬を見つけること</strong>から始めよう。好きな名前、好きな毛色、好きな騎手——理由は何でもいい。「この馬を応援したい」と思える1頭が見つかったら、<strong class="font-bold text-gray-900">単勝100円</strong>を買ってみる。それだけで、レースの見え方がまるで変わる。
+      </p>
+
+      <!-- メモリアル馬券 -->
+      <div class="bg-gradient-to-br from-yellow-50 to-amber-50 border border-amber-200 rounded-xl p-5 mb-6">
+        <div class="flex items-center gap-2 mb-3">
+          <i class="fa-solid fa-trophy text-amber-500"></i>
+          <h3 class="font-bold text-amber-900">メモリアル馬券という楽しみ方</h3>
+        </div>
+        <p class="text-sm text-gray-700 leading-relaxed mb-3">
+          推し馬が決まったら、はじめてその馬の馬券を買う日に単勝100円を1枚手元に残しておこう。「この馬を初めて応援した日」の証明になる。
+        </p>
+        <p class="text-sm text-gray-700 leading-relaxed">
+          推し馬がはじめて重賞（G1・G2・G3）に挑戦するときも単勝馬券を100円だけ買っておく。もし優勝したら、換金しないで手元に残す。日付・レース名・馬名・オッズが印字されたその1枚は、何年経っても「あの日、あの馬が勝った」という記憶を閉じ込めたメモリアルになる。<span class="font-bold text-amber-800">100円で買える、最高の記念品だ。</span>
+        </p>
+      </div>
+
+      <!-- 3つのルール -->
+      <h3 class="font-bold text-gray-900 mb-4 flex items-center gap-2">
+        <i class="fa-solid fa-list-check text-turf"></i> 初心者への3つのルール
+      </h3>
+      <div class="space-y-3">
+        <div class="flex gap-3 items-start bg-gray-50 rounded-xl p-4">
+          <span class="w-6 h-6 bg-turf rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0 mt-0.5">1</span>
+          <p class="text-sm text-gray-700"><span class="font-bold text-gray-900">推し馬を1頭決めてから馬券を買う。</span>「なんとなく強そう」ではなく、応援したい馬を選ぶ。</p>
+        </div>
+        <div class="flex gap-3 items-start bg-gray-50 rounded-xl p-4">
+          <span class="w-6 h-6 bg-turf rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0 mt-0.5">2</span>
+          <p class="text-sm text-gray-700"><span class="font-bold text-gray-900">最初は単勝か複勝、1点100円</span>から。勝ち負けより「馬を見る目」を育てることが先。</p>
+        </div>
+        <div class="flex gap-3 items-start bg-gray-50 rounded-xl p-4">
+          <span class="w-6 h-6 bg-turf rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0 mt-0.5">3</span>
+          <p class="text-sm text-gray-700"><span class="font-bold text-gray-900">重賞初挑戦・記念レースは単勝100円をキープ。</span>換金するかどうかはそのときに決めればいい。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Prev / Next -->
+    <div class="flex justify-between items-center mt-4">
+      <div class="text-gray-300 text-sm flex items-center gap-2">
+        <i class="fa-solid fa-arrow-left"></i> 前の記事
+      </div>
+      <a href="02_expectation.html" class="flex items-center gap-2 bg-turf text-white font-bold text-sm px-5 py-3 rounded-xl hover:bg-turf-dark transition">
+        次の記事：控除率と期待値 <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+
+  </main>
+
+  <footer class="bg-dark text-gray-400 py-8 mt-12 text-center text-sm">
+    <p class="mb-1"><span class="text-turf font-bold">競馬スタディ</span> | 馬研アカデミー</p>
+    <p>&copy; <span id="yr"></span> 馬研. All rights reserved.</p>
+    <script>document.getElementById("yr").textContent = new Date().getFullYear();</script>
+  </footer>
+
+</body>
+</html>
