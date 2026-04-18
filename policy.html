@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ポリシーと免責事項 | 馬研アカデミー</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { turf: "#2E8B57", "turf-dark": "#1a5c38", sky: "#E0F2FE", dark: "#1F2937" },
+          fontFamily: { sans: ["Helvetica Neue","Arial","Hiragino Kaku Gothic ProN","Hiragino Sans","Meiryo","sans-serif"] },
+        },
+      },
+    };
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .hero-gradient { background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 60%, #e2e8f0 100%); }
+    .section-card { background: white; border-radius: 1rem; padding: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,.06); border: 1px solid #f1f5f9; margin-bottom: 1.5rem; }
+    .tag-badge { display:inline-flex; align-items:center; gap:.375rem; background:rgba(100,116,139,.12); color:#475569; font-weight:700; font-size:.75rem; padding:.25rem .75rem; border-radius:9999px; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased flex flex-col min-h-screen">
+
+  <!-- Nav -->
+  <nav class="bg-white/90 backdrop-blur-md shadow-sm fixed w-full z-20 top-0 border-b border-green-100">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="text-gray-500 hover:text-turf transition flex items-center gap-2 font-bold text-sm">
+        <i class="fa-solid fa-arrow-left"></i>ポータルへ戻る
+      </a>
+      <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Rules</span>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero-gradient pt-24 pb-10 px-4 border-b border-gray-200">
+    <div class="max-w-4xl mx-auto">
+      <span class="tag-badge mb-4"><i class="fa-solid fa-scale-balanced"></i> Policy</span>
+      <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">
+        ポリシーと免責事項
+      </h1>
+      <p class="text-sm text-gray-500 mt-3">本ページは、研究室『馬研』が提供するシステムを利用する際のルールを定めたものです。招待を受けたメンバーは、利用をもって本ポリシーに同意したものとみなします。</p>
+    </div>
+  </header>
+
+  <main class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
+
+    <!-- 1. 目的 -->
+    <div class="section-card">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="w-8 h-8 bg-turf rounded-lg flex items-center justify-center text-white font-bold text-sm flex-shrink-0">1</span>
+        <h2 class="text-lg font-bold text-gray-900">本システムの目的</h2>
+      </div>
+      <p class="text-sm text-gray-700 leading-relaxed">
+        本システムは、競馬データを統計的・論理的に分析する「研究目的」で開発・運用されています。商用利用や、不特定多数への情報販売を目的としたものではありません。
+      </p>
+    </div>
+
+    <!-- 2. 未成年禁止 -->
+    <div class="section-card border-red-100">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center text-white font-bold text-sm flex-shrink-0">2</span>
+        <h2 class="text-lg font-bold text-gray-900">未成年者の利用禁止（競馬法第28条）</h2>
+      </div>
+      <div class="bg-red-50 border border-red-200 rounded-xl p-5 flex items-start gap-4">
+        <i class="fa-solid fa-triangle-exclamation text-red-500 text-xl flex-shrink-0 mt-0.5"></i>
+        <p class="text-sm font-bold text-red-800 leading-relaxed">
+          20歳未満の者は勝馬投票券（馬券）を購入し、または譲り受けることができません。そのため、<span class="underline decoration-red-400">20歳未満の方の本システムの利用を固く禁じます</span>。
+        </p>
+      </div>
+    </div>
+
+    <!-- 3. 免責事項 -->
+    <div class="section-card">
+      <div class="flex items-center gap-3 mb-5">
+        <span class="w-8 h-8 bg-turf rounded-lg flex items-center justify-center text-white font-bold text-sm flex-shrink-0">3</span>
+        <h2 class="text-lg font-bold text-gray-900">免責事項（自己責任の原則）</h2>
+      </div>
+      <div class="space-y-3">
+        <div class="flex items-start gap-3 bg-gray-50 rounded-xl p-4">
+          <i class="fa-solid fa-circle-xmark text-gray-400 mt-0.5 flex-shrink-0"></i>
+          <div>
+            <p class="font-bold text-gray-900 text-sm mb-1">情報の非保証</p>
+            <p class="text-sm text-gray-700 leading-relaxed">本システムが提供する予測・分析・スコアリング等の情報は、過去の統計データおよびAIアルゴリズムに基づく期待値であり、<strong class="font-bold text-gray-900">勝馬の的中や利益をいかなる意味においても保証するものではありません</strong>。</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 bg-gray-50 rounded-xl p-4">
+          <i class="fa-solid fa-user-shield text-gray-400 mt-0.5 flex-shrink-0"></i>
+          <div>
+            <p class="font-bold text-gray-900 text-sm mb-1">自己責任</p>
+            <p class="text-sm text-gray-700 leading-relaxed">勝馬投票券（馬券）の購入は、ユーザー自身の最終的な判断と責任において行ってください。本システムを利用したことにより生じたいかなる損害（経済的損失を含む）についても、管理者は一切の責任を負いません。</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 bg-gray-50 rounded-xl p-4">
+          <i class="fa-solid fa-power-off text-gray-400 mt-0.5 flex-shrink-0"></i>
+          <div>
+            <p class="font-bold text-gray-900 text-sm mb-1">サービスの中断</p>
+            <p class="text-sm text-gray-700 leading-relaxed">システムメンテナンス、APIの仕様変更、または管理者の都合により、本システムの稼働が予告なく停止・変更される場合があります。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. 禁止事項 -->
+    <div class="section-card">
+      <div class="flex items-center gap-3 mb-5">
+        <span class="w-8 h-8 bg-turf rounded-lg flex items-center justify-center text-white font-bold text-sm flex-shrink-0">4</span>
+        <h2 class="text-lg font-bold text-gray-900">禁止事項</h2>
+      </div>
+      <p class="text-sm text-gray-600 mb-4">本システムを長く安全に運用するため、以下の行為を禁止します。</p>
+      <div class="space-y-2">
+        <div class="flex items-start gap-3 text-sm text-gray-700 bg-orange-50 border border-orange-100 rounded-xl p-4">
+          <i class="fa-solid fa-ban text-orange-400 mt-0.5 flex-shrink-0 text-xs mt-1"></i>
+          本システムの予測結果やデータを、商用目的で外部（SNS等を含む）へ無断転載・販売する行為
+        </div>
+        <div class="flex items-start gap-3 text-sm text-gray-700 bg-orange-50 border border-orange-100 rounded-xl p-4">
+          <i class="fa-solid fa-ban text-orange-400 mt-0.5 flex-shrink-0 text-xs mt-1"></i>
+          本システムに対する過度なリクエスト送信等、サーバーに負荷をかける行為
+        </div>
+        <div class="flex items-start gap-3 text-sm text-gray-700 bg-orange-50 border border-orange-100 rounded-xl p-4">
+          <i class="fa-solid fa-ban text-orange-400 mt-0.5 flex-shrink-0 text-xs mt-1"></i>
+          招待されていない第三者へ、LINEアカウントのQRコード等をみだりに共有する行為
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. プライバシー -->
+    <div class="section-card">
+      <div class="flex items-center gap-3 mb-5">
+        <span class="w-8 h-8 bg-turf rounded-lg flex items-center justify-center text-white font-bold text-sm flex-shrink-0">5</span>
+        <h2 class="text-lg font-bold text-gray-900">プライバシー・データ取り扱い</h2>
+      </div>
+      <div class="space-y-3">
+        <div class="flex items-start gap-3 bg-blue-50 border border-blue-100 rounded-xl p-4">
+          <i class="fa-solid fa-lock text-blue-400 mt-0.5 flex-shrink-0"></i>
+          <p class="text-sm text-gray-700 leading-relaxed">本システムは、機能提供および収支管理のためにLINEのユーザー識別子等を取得しますが、これらを本システムの運用目的以外に使用したり、第三者へ提供したりすることはありません。</p>
+        </div>
+        <div class="flex items-start gap-3 bg-blue-50 border border-blue-100 rounded-xl p-4">
+          <i class="fa-solid fa-database text-blue-400 mt-0.5 flex-shrink-0"></i>
+          <p class="text-sm text-gray-700 leading-relaxed">本システムで使用している過去成績等の基礎データは、管理者が個人利用の範囲で正当に取得したものであり、その著作権等は各データ提供元に帰属します。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 制定日 -->
+    <div class="text-right text-sm text-gray-400 mt-6 space-y-1">
+      <p>制定日：2026年4月16日</p>
+      <p>管理者：馬研</p>
+    </div>
+
+  </main>
+
+  <footer class="bg-dark text-gray-400 py-8 mt-12 text-center text-sm">
+    <p class="mb-1"><span class="text-turf font-bold">研究室『馬研』</span> | 馬研アカデミー</p>
+    <p>&copy; <span id="yr"></span> 馬研. All rights reserved.</p>
+    <script>document.getElementById("yr").textContent = new Date().getFullYear();</script>
+  </footer>
+
+</body>
+</html>
