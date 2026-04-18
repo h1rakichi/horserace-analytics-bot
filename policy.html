@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ポリシーと免責事項 | 馬研アカデミー</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { turf: "#2E8B57", sky: "#E0F2FE", dark: "#1F2937" },
+          },
+        },
+      };
+    </script>
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .doc-content h1 {
+          @apply text-2xl md:text-3xl font-extrabold text-gray-900 mb-8 pb-4 border-b-2 border-turf leading-tight;
+        }
+        .doc-content h2 {
+          @apply text-xl font-bold text-gray-900 mt-12 mb-4;
+        }
+        .doc-content p {
+          @apply text-gray-700 leading-relaxed mb-4;
+        }
+        .doc-content ul {
+          @apply list-disc list-outside ml-6 space-y-2 mb-6 text-gray-700;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 text-gray-800 antialiased flex flex-col min-h-screen">
+    <nav
+      class="bg-white/90 backdrop-blur-md shadow-sm fixed w-full z-20 top-0 border-b border-green-100"
+    >
+      <div
+        class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between"
+      >
+        <a
+          href="index.html"
+          class="text-gray-500 hover:text-turf transition flex items-center font-bold"
+        >
+          <i class="fa-solid fa-arrow-left mr-2"></i>ポータルへ戻る
+        </a>
+        <span class="text-sm font-bold text-gray-400 uppercase tracking-widest"
+          >Rules</span
+        >
+      </div>
+    </nav>
+
+    <main
+      class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-28 w-full"
+    >
+      <div
+        class="bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-gray-100 doc-content"
+      >
+        <h1>ポリシーと免責事項</h1>
+
+        <p class="mb-8">
+          本ページは、研究室『馬研』（以下「当コミュニティ」）が提供するLINE公式アカウントおよび関連システム（以下「本システム」）を利用する際のルールを定めたものです。招待を受けたメンバーは、本システムの利用をもって本ポリシーに同意したものとみなします。
+        </p>
+
+        <h2>1. 本システムの目的</h2>
+        <p>
+          本システムは、競馬データを統計的・論理的に分析する「研究目的」で開発・運用されています。商用利用や、不特定多数への情報販売を目的としたものではありません。
+        </p>
+
+        <h2>2. 未成年者の利用禁止（競馬法第28条）</h2>
+        <p
+          class="font-bold text-red-600 bg-red-50 p-4 rounded-lg border border-red-200 mb-6"
+        >
+          <i class="fa-solid fa-triangle-exclamation mr-2"></i>
+          20歳未満の者は勝馬投票券（馬券）を購入し、または譲り受けることができません。そのため、20歳未満の方の本システムの利用を固く禁じます。
+        </p>
+
+        <h2>3. 免責事項（自己責任の原則）</h2>
+        <ul>
+          <li>
+            <strong>情報の非保証：</strong>
+            本システムが提供する予測、分析、スコアリング等の情報は、過去の統計データおよびAIアルゴリズムに基づく期待値であり、<strong
+              >勝馬の的中や利益をいかなる意味においても保証するものではありません。</strong
+            >
+          </li>
+          <li>
+            <strong>自己責任：</strong>
+            勝馬投票券（馬券）の購入は、ユーザー自身の最終的な判断と責任において行ってください。本システムを利用したことにより生じたいかなる損害（経済的損失を含む）についても、管理者は一切の責任を負いません。
+          </li>
+          <li>
+            <strong>サービスの中断：</strong>
+            システムメンテナンス、APIの仕様変更、または管理者の都合により、本システムの稼働が予告なく停止・変更される場合があります。
+          </li>
+        </ul>
+
+        <h2>4. 禁止事項</h2>
+        <p>本システムを長く安全に運用するため、以下の行為を禁止します。</p>
+        <ul>
+          <li>
+            本システムの予測結果やデータを、商用目的で外部（SNS等を含む）へ無断転載・販売する行為
+          </li>
+          <li>
+            本システムに対する過度なリクエスト送信等、サーバーに負荷をかける行為
+          </li>
+          <li>
+            招待されていない第三者へ、LINEアカウントのQRコード等をみだりに共有する行為
+          </li>
+        </ul>
+
+        <h2>5. プライバシー・データ取り扱い</h2>
+        <ul>
+          <li>
+            本システムは、機能提供および収支管理のためにLINEのユーザー識別子等を取得しますが、これらを本システムの運用目的以外に使用したり、第三者へ提供したりすることはありません。
+          </li>
+          <li>
+            本システムで使用している過去成績等の基礎データは、管理者が個人利用の範囲で正当に取得したものであり、その著作権等は各データ提供元に帰属します。
+          </li>
+        </ul>
+
+        <div class="mt-12 text-sm text-gray-500 text-right">
+          <p>制定日：2026年4月16日</p>
+          <p>管理者：馬研</p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="bg-dark text-gray-400 py-8 mt-auto text-center text-sm">
+      <p>&copy; <span id="current-year"></span> 馬研. All rights reserved.</p>
+      <script>
+        document.getElementById("current-year").textContent =
+          new Date().getFullYear();
+      </script>
+    </footer>
+  </body>
+</html>
